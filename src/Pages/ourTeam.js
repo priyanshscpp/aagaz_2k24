@@ -37,7 +37,6 @@ function Team() {
         <Card
           imgAlt="Card Image 2"
           imgSrc={namrata}
-          title="Secretary"
           description="This is the card description section. You can add more details about the product here"
           buttonText="Learn More"
           link="card2"
