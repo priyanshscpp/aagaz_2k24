@@ -1,19 +1,29 @@
 .eventStyle1 {
-    height: 2000px;
+    height: auto;
     width: 100%;
     background-color: rgb(33, 29, 33);
     color: white;
 }
 
 .eventStyle2 {
-    height: 2000px;
+    height: auto;
     width: 100%;
     background-color: rgb(33, 29, 33);
     color: white;
 }
+.eventsArea{
+    height:auto !important
+}
+.events div{
+    width: auto !important;
+    
+}
+.eventStyle1 .mainSection{
+height: auto !important
+}
 
 .eventStyle3 {
-    height: 2000px;
+    height: auto;
     width: 100%;
     background-color: rgb(33, 29, 33);
     color: white;
@@ -21,13 +31,13 @@
 
 @media only screen and (max-width: 600px) {
     .eventStyle1 {
-        height: 1800px;
+        height: auto;
     }
     .eventStyle2 {
-        height: 1600px;
+      height  : auto;
     }
     .eventStyle3 {
-        height: 1700px;
+        height: auto;
     }
 }
 
@@ -101,6 +111,22 @@ h5 {
     .eventPageBRs {
         display: contents;
     }
+    .events div{
+    background-color: transparent !important;
+    width: 80%;
+        margin:.5rem !important
+}
+    .eventsArea{
+    height:auto !important
+}
+.events div{
+    width: auto !important;
+    
+}
+.eventStyle1 .mainSection{
+height: auto !important
+}
+
 }
 .events div{
     background-color: transparent !important;
