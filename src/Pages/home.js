@@ -73,7 +73,7 @@ const home = () => {
                 display: "block",
                 padding: "5px",
               }}
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfmi3xtwGG3YAwpWxpAp08ZamaBEObvH4rgQTwPLzez2k486w/viewform?usp=sf_link"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdINOWU8HIZVhMEshTGtAm1MLf-c2MDRbt9Oc407yXtg59jvA/viewform?usp=sf_link"
               target="_blank"
               rel="noopener noreferrer"
             >
