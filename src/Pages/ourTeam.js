@@ -11,8 +11,7 @@ import faiz from "./images/faiz.png"
     import vikas from "./images/vikas event.jpg"
     import ashutosh from "./images/pr ashutosh.jpg"
     import subodh from "./images/event subodh.jpg"
-    import anjali from "./images/anjali design.jpg"
-
+   
     
 function Team() {
   return (
@@ -173,19 +172,7 @@ function Team() {
                title="Events Head"
                plink="tel:+916392063720"
              />
-             <Card
-               imgSrc={anjali}
-
-               imgAlt="Card Image 3"
-               description="This is the card description section. You can add more details about the product here"
-               buttonText="Learn More"
-               name="Anjali"
-               ilink="https://www.instagram.com/_anjalisingh_0/"
-               llink="https://www.linkedin.com/in/anjali-singh-a40046225/"
-               elink="mailto:anjalisingh8152296@gmail.com"
-               title="Design Head"
-               plink="tel:+919719599695"
-             />
+            
 
     </div>
   );
