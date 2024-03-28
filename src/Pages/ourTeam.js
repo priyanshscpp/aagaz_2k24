@@ -90,19 +90,6 @@ function Team() {
           
           plink="tel:+918306122928"
         />
-        <Card
-          imgAlt="Card Image 3"
-          imgSrc={ehram}
-          title="Marketing Head"
-          description="This is the card description section. You can add more details about the product here"
-          link="card2"
-          name="Ehram"
-          ilink="https://www.instagram.com/ehram07"
-          llink="https://in.linkedin.com/in/sahil-shakoor-270091145"
-          elink="mailto:ehram003@gmail.com"
-        
-          plink="tel:+919648061004"
-        />
 
         <Card
                 imgSrc={aryan}
@@ -119,6 +106,51 @@ function Team() {
               
         />
 
+
+        <Card
+               imgSrc={vikas}
+
+               imgAlt="Card Image 3"
+               description="This is the card description section. You can add more details about the product here"
+               buttonText="Learn More"
+               name="Vikas"
+               ilink="https://www.instagram.com/vikas_kgo"
+               llink="https://www.linkedin.com/in/vikas-gupta-6a19b5222?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+               elink="mailto:21010073@hbtu.ac.in"
+               title="Events Head"
+               plink="tel:+916367791036"
+             />
+
+          <Card
+               imgSrc={subodh}
+
+               imgAlt="Card Image 3"
+               description="This is the card description section. You can add more details about the product here"
+               buttonText="Learn More"
+               name="Subodh"
+               ilink="https://www.instagram.com/subodh_gangwar_/"
+               llink="https://www.linkedin.com/in/subodh-gangwar-b33b05165/"
+               elink="mailto:sahilshakoor@gmail.com"
+               title="Events Head"
+               plink="tel:+916392063720"
+             />
+
+        <Card
+          imgAlt="Card Image 3"
+          imgSrc={ehram}
+          title="Marketing Head"
+          description="This is the card description section. You can add more details about the product here"
+          link="card2"
+          name="Ehram"
+          ilink="https://www.instagram.com/ehram07"
+          llink="https://in.linkedin.com/in/sahil-shakoor-270091145"
+          elink="mailto:ehram003@gmail.com"
+        
+          plink="tel:+919648061004"
+        />
+
+      
+
         <Card
                 imgSrc={ruchi}
 
@@ -134,19 +166,6 @@ function Team() {
               
         />
         <Card
-               imgSrc={vikas}
-
-               imgAlt="Card Image 3"
-               description="This is the card description section. You can add more details about the product here"
-               buttonText="Learn More"
-               name="Vikas"
-               ilink="https://www.instagram.com/vikas_kgo"
-               llink="https://www.linkedin.com/in/vikas-gupta-6a19b5222?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-               elink="mailto:21010073@hbtu.ac.in"
-               title="Events Head"
-               plink="tel:+916367791036"
-             />
-        <Card
                imgSrc={ashutosh}
 
                imgAlt="Card Image 3"
@@ -159,19 +178,7 @@ function Team() {
                title="Public Relations Head"
                plink="tel:+917006535057"
              />
-              <Card
-               imgSrc={subodh}
-
-               imgAlt="Card Image 3"
-               description="This is the card description section. You can add more details about the product here"
-               buttonText="Learn More"
-               name="Subodh"
-               ilink="https://www.instagram.com/subodh_gangwar_/"
-               llink="https://www.linkedin.com/in/subodh-gangwar-b33b05165/"
-               elink="mailto:sahilshakoor@gmail.com"
-               title="Events Head"
-               plink="tel:+916392063720"
-             />
+              
             
 
     </div>
