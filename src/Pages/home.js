@@ -4,7 +4,7 @@ import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import "../App.css";
 
-import back from "../res/Aagaz25'.jpeg";
+import back from "../res/firstbgaagaz.png";
 import adhyaay_logo from "../res/Logo.png";
 import adhyaay_logo_whitered from "../res/onlyaagaz.png";
 
