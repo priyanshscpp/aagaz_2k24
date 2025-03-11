@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import "../App.css";
 
 import back from "../res/firstbgaagaz.png";
-import adhyaay_logo from "../res/aagaztext.png";
+import adhyaay_logo from "../res/Logo.png";
 import adhyaay_logo_whitered from "../res/onlyaagaz.png";
 
 const home = () => {
