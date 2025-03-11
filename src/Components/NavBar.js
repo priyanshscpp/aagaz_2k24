@@ -30,7 +30,7 @@ const NavBar = () => {
             height="25"
             className="d-inline-block align-top"
           />{" "}
-          AAGAZ'24
+          AAGAZ'25
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
