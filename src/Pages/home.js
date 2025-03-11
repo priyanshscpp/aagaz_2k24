@@ -28,7 +28,7 @@ const home = () => {
     
     <section>
       <center>
-      {/* <div class="loader">
+      { <div class="loader">
 	<div class="loader-inner">
 		<div class="loader-line-wrap">
 			<div class="loader-line"></div>
@@ -46,7 +46,7 @@ const home = () => {
 			<div class="loader-line"></div>
 		</div>
 	</div>
-</div> */}
+</div> }
         <div
           style={homeStyle}
           className="flex flex-col items-center justify-center"
