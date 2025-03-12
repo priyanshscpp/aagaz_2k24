@@ -34,13 +34,10 @@ export const Card = ({
 <Link id="mauu" to={llink}> <div id="gflexx"><FontAwesomeIcon icon="fa-brands fa-linkedin" /></div></Link>
 <Link id="mauu" to={elink}> <div id="gflexx">   <FontAwesomeIcon icon={faEnvelope} /></div></Link>
 <Link id="mauu" to={plink}> <div id="gflexx"> <FontAwesomeIcon icon={faPhone} /></div></Link>
-<Link id="mauu" to={"https://sahil-shakoor.web.app"}> {name=="Sahil"?<div id="gflexx"> <FontAwesomeIcon icon={faLink} spin/> </div>:""}</Link>
-
-
+<Link id="mauu" to={"https://sahil-shakoor.web.app"}> {name==="Sahil"?<div id="gflexx"> <FontAwesomeIcon icon={faLink} spin/> </div>:""}</Link>
   
   
    </div> }
-
     </div>
   );
 };

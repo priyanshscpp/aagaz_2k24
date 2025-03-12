@@ -1,21 +1,60 @@
 /* navbar.css */
 
-.navbar {
+.navbar, .custom-navbar {
   display: flex;
   align-items: center;
-  width: auto;
-  background-color: rgba(115, 49, 49, 0.5);
-  top: 30px;
-  left: 10%;
-  position: absolute;
-  border-radius: 15px;
-  z-index: 1;
-  transition: box-shadow 0.3s ease, top 0.3s ease;
-  padding: 10px;
+  width: 80vw !important;
+  background: rgba(0, 0, 0, 0.7) !important; /* More visible background */
+  backdrop-filter: blur(5px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.03) !important;
+  top: 20px !important; /* Moved slightly higher */
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  position: fixed !important;
+  border-radius: 15px !important;
+  z-index: 9999 !important;
+  transition: all 0.3s ease-in-out !important;
+  padding: 15px !important;
+  margin: 0 auto !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important; /* Added subtle shadow */
 }
 
-.navbar:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Remove any potential background elements */
+.navbar::before, .navbar::after, 
+.custom-navbar::before, .custom-navbar::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
+.navbar:hover, .custom-navbar:hover {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.navbar-brand {
+  position: relative;
+  padding: 5px 15px !important;
+  transition: all 0.3s ease !important;
+}
+
+.navbar-brand::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #ffcb05, #ffac0b) !important;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar-brand:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -28,55 +67,234 @@
   right: 0;
   border-radius: 0;
 }
+
 .navLinks1 {
   text-decoration: none;
-  color: white;
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
-  margin: 0 10px 0 10px;
-  transition: 0.3s;
-  text-align: center;
+  font-size: 14px !important;
+  margin: 0 15px;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+
+.navLinks1::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #f23849, #ff526c);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
 }
 
 .navLinks1:hover {
-  border-bottom: 2px solid red;
-  color: aliceblue;
-  font-size: 16px;
+  color: #ffffff;
+  transform: translateY(-2px);
+  border-bottom: none;
+  font-size: 14px !important;
+}
+
+.navLinks1:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .navLinks2 {
   border: 2px rgb(255, 253, 253);
 }
-/* Override Bootstrap styles for mobile menu */
-@media (max-width: 767px) { 
+
+/* Make container fill available width */
+.navbar .container {
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 991px) {
+  .navbar, .custom-navbar {
+    width: 95vw !important;
+    padding: 10px !important;
+  }
+
   .navbar-collapse {
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
-    bottom: 0;
-    background-color: rgba(115, 49, 49, 0.8);
-    padding: 15px;
-    z-index: 1000;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
   }
 
   .navbar-nav {
-    margin-top: 15rem;
-    width: 100%;
-    text-align: center;
-  }
-
-  .navbar-toggler {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    z-index: 1001;
+    padding: 1rem 0;
   }
 
   .navLinks1 {
-    font-size: 20px;
+    margin: 10px 0;
+    padding: 10px 15px;
+    font-size: 16px !important;
+    text-align: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
   }
+
   .navLinks1:hover {
-    border-bottom: none;
-    font-size: 20px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 576px) {
+  .navbar, .custom-navbar {
+    width: 100vw !important;
+    border-radius: 0 !important;
+    top: 0 !important;
+    padding: 8px !important;
+  }
+
+  .navbar-brand {
+    font-size: 18px !important;
+  }
+
+  .navbar-brand img {
+    width: 25px;
+    height: 20px;
+  }
+
+  .navLinks1 {
+    font-size: 15px !important;
+  }
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+.custom-navbar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+}
+
+.navbar-toggler {
+  border: none !important;
+  padding: 0;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+.navbar-brand img {
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 991px) {
+  .custom-navbar {
+    width: 90vw !important;
+  }
+  
+  .navbar-collapse {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Add padding to all page containers to prevent navbar overlap */
+.eventStyle1, .eventStyle2, .eventStyle3,
+.team-container, .gallery-container, .merch-container,
+.sponsors-container, .esports-container {
+  padding-top: 120px !important; /* Ensure content starts below navbar */
+}
+
+/* Specific adjustments for mobile */
+@media (max-width: 576px) {
+  .eventStyle1, .eventStyle2, .eventStyle3,
+  .team-container, .gallery-container, .merch-container,
+  .sponsors-container, .esports-container {
+    padding-top: 80px !important;
+  }
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 2rem;
+  transition: all 0.3s ease;
+}
+
+/* Add padding to main content containers to prevent navbar overlap */
+.esports-container,
+.eventStyle1,
+.team-container,
+.gallery-container,
+.sponsors-container {
+  padding-top: 80px !important;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.3rem 1rem;
+  }
+  
+  .esports-container,
+  .eventStyle1,
+  .team-container,
+  .gallery-container,
+  .sponsors-container {
+    padding-top: 60px !important;
   }
 }

@@ -1,178 +1,176 @@
 import React from 'react';
-import "bootstrap/dist/css/bootstrap.css";
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { FaClock, FaMapMarkerAlt, FaTrophy } from 'react-icons/fa';
 import './../App.css';
 import './../Pages/style/events.css';
-import { Link } from 'react-router-dom';
 
-// import Events1 from './events1';
-// import Events0 from './events0';
+const Events2 = () => {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.5 }
+    }
+  };
 
-import {
-  Timeline,
-  Events,
-  TextEvent,
-  themes,
-  createTheme,
-} from '@merc/react-timeline';
+  // Intersection observer for scroll animations
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
 
-const customTheme = createTheme(themes.default, {
-  card: {
-    backgroundColor: '#efefef',
-  },
-  date: {
-    backgroundColor: '#f7141b',
-  },
-  marker: {
-    borderColor: '#f7141b',
-  },
-  timelineTrack: {
-    backgroundColor: '#f7141b',
-  },
-}
-);
+  // Event data for Day 3
+  const eventsData = [
+    {
+      id: 1,
+      title: "1500 METERS",
+      venue: "Athletic Track",
+      time: "09:00 AM - 10:00 AM",
+      description: "Long distance race for men and women categories with finals only."
+    },
+    {
+      id: 2,
+      title: "4x100 METERS RELAY",
+      venue: "Athletic Track",
+      time: "10:30 AM - 11:30 AM",
+      description: "Relay race with teams of four runners each completing 100 meters."
+    },
+    {
+      id: 3,
+      title: "DISCUS THROW",
+      venue: "Throwing Area",
+      time: "12:00 PM - 01:30 PM",
+      description: "Discus throw competition for men and women categories with finals only."
+    },
+    {
+      id: 4,
+      title: "BASKETBALL (SEMIFINALS & FINALS)",
+      venue: "Basketball Court",
+      time: "10:00 AM - 02:00 PM",
+      description: "Semifinal and final matches of the basketball tournament to determine the champions."
+    },
+    {
+      id: 5,
+      title: "VOLLEYBALL (SEMIFINALS & FINALS)",
+      venue: "Volleyball Court",
+      time: "10:00 AM - 02:00 PM",
+      description: "Semifinal and final matches of the volleyball tournament to determine the champions."
+    },
+    {
+      id: 6,
+      title: "CRICKET (SEMIFINALS & FINALS)",
+      venue: "Cricket Ground",
+      time: "09:00 AM - 04:00 PM",
+      description: "Semifinal and final matches of the cricket tournament to determine the champions."
+    },
+    {
+      id: 7,
+      title: "CHESS FINALS",
+      venue: "Indoor Hall",
+      time: "10:00 AM - 01:00 PM",
+      description: "Final rounds of the chess tournament to determine the champion."
+    },
+    {
+      id: 8,
+      title: "CLOSING CEREMONY",
+      venue: "Main Auditorium",
+      time: "05:00 PM - 07:00 PM",
+      description: "The grand closing ceremony with prize distribution, performances, and the official conclusion of AAGAZ'25."
+    }
+  ];
 
-const events2 = () => {
-
-  const _event1 = ({ children }) => (
-    <div>
-      <u><h1>SEMI FINALS</h1></u>
-    </div>
-  );
-  const _event2 = ({ children }) => (
-    <div>
-      <h1>Basketball</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event3 = ({ children }) => (
-    <div>
-      <h1>Volleyball</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event4 = ({ children }) => (
-    <div>
-      <h1>Cricket</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event5 = ({ children }) => (
-    <div>
-      <h1>Badminton</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event6 = ({ children }) => (
-    <div>
-      <h1>Kabaddi</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event7 = ({ children }) => (
-    <div>
-      <h1>Football</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event8 = ({ children }) => (
-    <div>
-      <u><h1>FINALS</h1></u>
-    </div>
-  );
-  const _event9 = ({ children }) => (
-    <div>
-      <h1>Basketball</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event10 = ({ children }) => (
-    <div>
-      <h1>Volleyball</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event11 = ({ children }) => (
-    <div>
-      <h1>Cricket</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event12 = ({ children }) => (
-    <div>
-      <h1>Badminton</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event13 = ({ children }) => (
-    <div>
-      <h1>Kabaddi</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event14 = ({ children }) => (
-    <div>
-      <h1>Football</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event15 = ({ children }) => (
-    <div>
-      <h1>Closing Ceremony</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
-  const _event16 = ({ children }) => (
-    <div>
-      <h1>Return kit event</h1>
-      <h5>Venue : </h5>
-    </div>
-  );
+  // Background particles component
+  const EventsParticleBackground = () => {
+    return (
+      <div className="events-particles"></div>
+    );
+  };
 
   return (
-    <section className='eventStyle3 mainSection'>
-      <span style={{ fontSize: "60px" }}>EVENTS</span>
-      <span className='eventPageSpaces'>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
-      <span className='eventPageBRs'>
-        <br></br><br></br>
-      </span>
-      <span>
-        <span className='dayChooserStyle' >
-          <Link className='link' to="/Events0">Day 1</Link>
-        </span>
-        <span className='dayChooserStyle'>
-          <Link className='link' to="/Events1">Day 2</Link>
-        </span>
-        <span className='choosedDayStyle'>
-          Day 3
-        </span>
-      </span>
+    <div className="eventStyle3">
+      <EventsParticleBackground />
+      
+      <Container className="mainSection">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-center mb-4" style={{ color: 'var(--events-accent)', fontSize: '2.5rem', fontWeight: '700' }}>
+            AAGAZ'25 EVENTS
+          </h1>
+          <p className="text-center mb-5" style={{ color: 'var(--events-text-secondary)', maxWidth: '800px', margin: '0 auto' }}>
+            Experience three days of thrilling competitions, cultural performances, and unforgettable moments at AAGAZ'25.
+          </p>
+        </motion.div>
 
-      <div className='eventsArea'>
-        <Timeline theme={customTheme} opts="inline-evts">
-          <Events>
+        <motion.div 
+          className="days-container"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <Link to="/events0" className="link">
+            <div className="dayChooserStyle">DAY 1</div>
+          </Link>
+          <Link to="/events1" className="link">
+            <div className="dayChooserStyle">DAY 2</div>
+          </Link>
+          <div className="choosedDayStyle">DAY 3</div>
+        </motion.div>
 
-            <TextEvent date="9:00" card={_event1} />
-            <TextEvent date="9:00" card={_event2} />
-            <TextEvent date="9:00" card={_event3} />
-            <TextEvent date="9:00" card={_event4} />
-            <TextEvent date="10:00" card={_event5} />
-            <TextEvent date="10:00" card={_event6} />
-            <TextEvent date="10:00" card={_event7} />
-            <TextEvent date="11:00" card={_event8} />
-            <TextEvent date="12:00" card={_event9} />
-            <TextEvent date="12:30" card={_event10} />
-            <TextEvent date="12:30" card={_event11} />
-            <TextEvent date="1:00" card={_event12} />
-            <TextEvent date="1:00" card={_event13} />
-            <TextEvent date="2:00" card={_event14} />
-            <TextEvent date="2:00" card={_event15} />
-            <TextEvent date="2:00" card={_event16} />
+        <motion.div 
+          className="eventsArea"
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          ref={ref}
+        >
+          <Row>
+            {eventsData.map((event) => (
+              <Col lg={6} md={12} key={event.id} className="mb-4">
+                <motion.div 
+                  className="event-card"
+                  variants={itemVariants}
+                >
+                  <h1>{event.title}</h1>
+                  <h5>
+                    <FaMapMarkerAlt style={{ marginRight: '8px' }} />
+                    {event.venue}
+                  </h5>
+                  <p>{event.description}</p>
+                  <div className="event-time">
+                    <FaClock /> {event.time}
+                  </div>
+                  {event.id === 8 && (
+                    <div className="event-highlight" style={{ marginTop: '10px', color: 'var(--events-highlight)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <FaTrophy /> Grand Finale with Prize Distribution
+                    </div>
+                  )}
+                </motion.div>
+              </Col>
+            ))}
+          </Row>
+        </motion.div>
+      </Container>
+    </div>
+  );
+};
 
-          </Events>
-        </Timeline>
-      </div>
-    </section>
-  )
-}
-
-export default events2
+export default Events2;
