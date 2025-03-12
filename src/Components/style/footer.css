@@ -1,0 +1,149 @@
+.site-footer {
+  background-color: #000000;
+  color: var(--text-primary);
+  padding: 20px 0;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+/* Logo Section */
+.footer-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-logo {
+  height: 40px;
+  filter: brightness(0.9);
+}
+
+.footer-logo-section h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(45deg, #fff, #ffffffcc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Description Section */
+.footer-description {
+  text-align: center;
+}
+
+.footer-description p {
+  margin: 0 0 10px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.contact-info {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.contact-info a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: var(--accent-color);
+}
+
+/* Social Links */
+.footer-social {
+  display: flex;
+  align-items: center;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 50%;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-bottom p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.heart-icon {
+  color: #ff3366;
+  animation: heartbeat 1.5s ease infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-social {
+    margin-top: 15px;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+} 

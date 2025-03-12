@@ -1,196 +1,53 @@
-import React from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import { motion } from "framer-motion";
-import "../Pages/style/footer.css";
-import {
-  FaMapMarkerAlt,
-  FaPhoneAlt,
-  FaEnvelope,
-  FaInstagram,
-  FaLinkedin,
-  FaFacebook,
-  FaTwitter,
-  FaCode
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import { FaInstagram, FaLinkedin, FaYoutube, FaTwitter, FaHeart, FaEnvelope, FaPhone } from 'react-icons/fa';
+import aagaz_logo from '../res/onlyaagaz.png';
+import './style/footer.css';
 
 const Footer = () => {
-  // Animation variants
-  const footerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { type: "spring", stiffness: 100, damping: 10 }
-    }
-  };
-
-  const iconVariants = {
-    hidden: { scale: 0 },
-    visible: { scale: 1 }
-  };
-
-  const hoverVariants = {
-    hover: { scale: 1.1, y: -3 }
-  };
-
-  const linkItems = [
-    { path: "/", name: "Home" },
-    { path: "/events0", name: "Events" },
-    { path: "/sponsers", name: "Sponsors" },
-    { path: "/ourTeam", name: "Team" },
-    { path: "/gallery", name: "Gallery" },
-    { path: "/esports", name: "Esports" }
-  ];
-
   return (
-    <motion.footer 
-      className="tech-footer"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={footerVariants}
-    >
-      <div className="footer-glow"></div>
+    <footer className="site-footer">
       <Container>
-        <Row className="footer-content">
-          <Col lg={4} md={6} className="footer-brand">
-            <motion.div variants={itemVariants}>
-              <h2 className="footer-logo">AAGAZ'25</h2>
-              <p className="footer-tagline">Where Sports Meet Innovation</p>
-              <div className="footer-divider"></div>
-              <p className="footer-desc">
-                AAGAZ'25 is HBTU Kanpur's annual sports fest, celebrating sportsmanship, 
-                competition, and innovation through diverse sporting events.
-              </p>
-            </motion.div>
-          </Col>
+        <div className="footer-content">
+          {/* Left - Logo */}
+          <div className="footer-logo-section">
+            <img src={aagaz_logo} alt="Aagaz Logo" className="footer-logo" />
+            <h2>AAGAZ'25</h2>
+          </div>
 
-          <Col lg={4} md={6} className="quick-links">
-            <motion.h3 variants={itemVariants} className="footer-heading">Quick Links</motion.h3>
-            <motion.div variants={itemVariants} className="footer-links">
-              {linkItems.map((item, index) => (
-                <motion.div 
-                  key={index}
-                  variants={itemVariants}
-                  whileHover="hover"
-                >
-                  <Link to={item.path} className="footer-link">
-                    <motion.span variants={hoverVariants}>{item.name}</motion.span>
-                  </Link>
-                </motion.div>
-              ))}
-            </motion.div>
-          </Col>
+          {/* Middle - Description */}
+          <div className="footer-description">
+            <p>HBTU's Premier Sports & Innovation Festival</p>
+            <div className="contact-info">
+              <a href="mailto:contact@aagaz.com"><FaEnvelope /> contact@aagaz.com</a>
+              <a href="tel:+919876543210"><FaPhone /> +91 98765 43210</a>
+            </div>
+          </div>
 
-          <Col lg={4} md={12} className="contact-info">
-            <motion.h3 variants={itemVariants} className="footer-heading">Contact Us</motion.h3>
-            
-            <motion.div variants={itemVariants} className="contact-item">
-              <div className="contact-icon">
-                <FaMapMarkerAlt />
-              </div>
-              <div className="contact-text">
-                HBTU, Kanpur, Uttar Pradesh
-              </div>
-            </motion.div>
-            
-            <motion.div variants={itemVariants} className="contact-item">
-              <div className="contact-icon">
-                <FaPhoneAlt />
-              </div>
-              <div className="contact-text">
-                <a href="tel:+91-6393743138">6393743138</a> (General)
-                <br />
-                <a href="tel:+91-6392063720">6392063720</a> (Technical)
-              </div>
-            </motion.div>
-            
-            <motion.div variants={itemVariants} className="contact-item">
-              <div className="contact-icon">
-                <FaEnvelope />
-              </div>
-              <div className="contact-text">
-                <a href="mailto:aagaz24official@gmail.com">aagaz24official@gmail.com</a>
-              </div>
-            </motion.div>
-            
-            <motion.div variants={itemVariants} className="social-links">
-              <motion.a 
-                href="https://www.instagram.com/hbtu_sports/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                variants={iconVariants}
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className="social-icon instagram"
-              >
+          {/* Right - Social Links */}
+          <div className="footer-social">
+            <div className="social-links">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">
                 <FaInstagram />
-              </motion.a>
-              
-              <motion.a 
-                href="https://www.linkedin.com/in/sports-sub-council-hbtu-7312472ab/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                variants={iconVariants}
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className="social-icon linkedin"
-              >
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                 <FaLinkedin />
-              </motion.a>
-              
-              <motion.a 
-                href="https://www.facebook.com/hbtu.ac.in/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                variants={iconVariants}
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className="social-icon facebook"
-              >
-                <FaFacebook />
-              </motion.a>
-              
-              <motion.a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                variants={iconVariants}
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className="social-icon twitter"
-              >
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" title="YouTube">
+                <FaYoutube />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">
                 <FaTwitter />
-              </motion.a>
-            </motion.div>
-          </Col>
-        </Row>
-        
-        <motion.div 
-          variants={itemVariants}
-          className="footer-bottom"
-        >
-          <div className="copyright">
-            © {new Date().getFullYear()} AAGAZ'25. All rights reserved.
+              </a>
+            </div>
           </div>
-          <div className="credits">
-            <FaCode /> Designed with <span className="heart">❤</span> by Technical Team
-          </div>
-        </motion.div>
+        </div>
+
+        <div className="footer-bottom">
+          <p>Made with <FaHeart className="heart-icon" /> by Technical Team</p>
+        </div>
       </Container>
-    </motion.footer>
+    </footer>
   );
 };
 

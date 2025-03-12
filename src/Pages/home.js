@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Container, Row, Col } from "react-bootstrap";
@@ -8,7 +8,7 @@ import "../App.css";
 import "./style/home.css";
 import aagaz_logo from "../res/Logo.png";
 import teamPhoto from "../res/aagazbg.png";
-import { FaCalendarAlt, FaMapMarkerAlt, FaUsers, FaMedal, FaTrophy, FaLaptop } from "react-icons/fa";
+import { FaCalendarAlt, FaUsers, FaMedal, FaTrophy, FaLaptop } from "react-icons/fa";
 import sportIcon1 from "../res/valorant.jpg";
 import sportIcon2 from "../res/bgmi.jpg";
 
@@ -36,6 +36,17 @@ const Home = () => {
   // Event date - set to a future date
   const eventDate = new Date('2025-02-15T00:00:00');
 
+  // State for animated stat values
+  const [animatedStats, setAnimatedStats] = useState({
+    events: 0,
+    colleges: 0,
+    participants: 0,
+    prizePool: 0
+  });
+  
+  // Ref to track if stats have been animated
+  const statsAnimated = useRef(false);
+
   // Update countdown timer
   useEffect(() => {
     const timer = setInterval(() => {
@@ -53,13 +64,53 @@ const Home = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [eventDate]);
 
   // Trigger animations when sections come into view
   useEffect(() => {
     if (aboutInView) controls.start("visible");
     if (featuresInView) featuresControl.start("visible");
-    if (statsInView) statsControl.start("visible");
+    
+    // Start stats animation when stats section comes into view
+    if (statsInView && !statsAnimated.current) {
+      statsControl.start("visible");
+      
+      // Animate the stats values
+      statsAnimated.current = true;
+      
+      // Events count animation
+      let eventsCount = 0;
+      const eventsInterval = setInterval(() => {
+        eventsCount += 1;
+        setAnimatedStats(prev => ({ ...prev, events: eventsCount }));
+        if (eventsCount >= 25) clearInterval(eventsInterval);
+      }, 80);
+      
+      // Colleges count animation
+      let collegesCount = 0;
+      const collegesInterval = setInterval(() => {
+        collegesCount += 5;
+        setAnimatedStats(prev => ({ ...prev, colleges: collegesCount }));
+        if (collegesCount >= 100) clearInterval(collegesInterval);
+      }, 50);
+      
+      // Participants count animation
+      let participantsCount = 0;
+      const participantsInterval = setInterval(() => {
+        participantsCount += 250;
+        setAnimatedStats(prev => ({ ...prev, participants: participantsCount }));
+        if (participantsCount >= 5000) clearInterval(participantsInterval);
+      }, 40);
+      
+      // Prize pool count animation
+      let prizeCount = 0;
+      const prizeInterval = setInterval(() => {
+        prizeCount += 0.5;
+        setAnimatedStats(prev => ({ ...prev, prizePool: prizeCount }));
+        if (prizeCount >= 10) clearInterval(prizeInterval);
+      }, 50);
+    }
+    
     if (eventsInView) eventsControl.start("visible");
   }, [controls, aboutInView, featuresControl, featuresInView, statsControl, statsInView, eventsControl, eventsInView]);
 
@@ -112,39 +163,54 @@ const Home = () => {
   };
 
   const featureCardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: i => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.15,
-        duration: 0.5,
-        type: "spring",
-        stiffness: 100
-      }
-    }),
-    hover: {
-      y: -10,
-      boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
-  const statVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.9 },
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
     visible: i => ({
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        delay: i * 0.15,
-        duration: 0.5,
+        delay: i * 0.2,
+        duration: 0.7,
         type: "spring",
-        stiffness: 100
+        stiffness: 80,
+        damping: 8
       }
-    })
+    }),
+    hover: {
+      y: -15,
+      scale: 1.05,
+      boxShadow: "0 20px 30px rgba(0, 0, 0, 0.3)",
+      transition: {
+        duration: 0.4,
+        type: "spring",
+        stiffness: 300
+      }
+    }
+  };
+
+  const statVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.8 },
+    visible: i => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.6,
+        type: "spring",
+        stiffness: 70,
+        damping: 8
+      }
+    }),
+    hover: {
+      scale: 1.08,
+      y: -10,
+      transition: {
+        duration: 0.3,
+        type: "spring",
+        stiffness: 300
+      }
+    }
   };
 
   // Event data
@@ -204,6 +270,48 @@ const Home = () => {
     );
   };
 
+  // Tech-style particles for stats section
+  const StatsParticleBackground = () => {
+    return (
+      <div className="stats-particles">
+        {Array.from({ length: 50 }).map((_, index) => (
+          <motion.div
+            key={index}
+            className="stats-particle"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              opacity: Math.random() * 0.5 + 0.1
+            }}
+            animate={{
+              x: [
+                Math.random() * window.innerWidth,
+                Math.random() * window.innerWidth,
+                Math.random() * window.innerWidth
+              ],
+              y: [
+                Math.random() * window.innerHeight,
+                Math.random() * window.innerHeight,
+                Math.random() * window.innerHeight
+              ],
+              opacity: [0.1, 0.3, 0.1],
+              scale: [0.8, 1.2, 0.8]
+            }}
+            transition={{
+              duration: Math.random() * 30 + 20,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            style={{
+              width: Math.random() * 3 + 1,
+              height: Math.random() * 3 + 1
+            }}
+          />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="home-page">
       {/* Hero Section with dynamic background and countdown */}
@@ -254,36 +362,10 @@ const Home = () => {
                     </motion.div>
                   </div>
                 </motion.div>
-                
-                <motion.div variants={fadeIn} className="hero-cta">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button className="primary-button">
-                      <a
-                        href="https://forms.fillout.com/t/7eJkvXYn6jus"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="button-link"
-                      >
-                        Register Now
-                      </a>
-                    </Button>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button className="secondary-button" href="#about-section">
-                      Explore Events
-                    </Button>
-                  </motion.div>
-                </motion.div>
               </motion.div>
             </Col>
             
-            <Col lg={6} className="hero-image-container">
+            <Col lg={6} className="hero-image-container d-flex align-items-center">
               <motion.div 
                 className="hero-image-wrapper"
                 variants={heroImageVariants}
@@ -297,6 +379,26 @@ const Home = () => {
                   fluid 
                 />
                 <div className="hero-image-glow"></div>
+                
+                <motion.div
+                  className="logo-register-button"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                >
+                  <Button className="register-cta">
+                    <a
+                      href="https://forms.fillout.com/t/7eJkvXYn6jus"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="button-link"
+                    >
+                      Register Now
+                    </a>
+                  </Button>
+                </motion.div>
               </motion.div>
             </Col>
           </Row>
@@ -450,6 +552,7 @@ const Home = () => {
       {/* Statistics Section */}
       <section className="stats-section" ref={statsRef} id="stats-section">
         <div className="stats-overlay"></div>
+        <StatsParticleBackground />
         <Container>
           <motion.div
             variants={staggerContainer}
@@ -459,19 +562,42 @@ const Home = () => {
           >
             <Row>
               {[
-                { value: "25+", label: "Sports Events", icon: "🏆" },
-                { value: "100+", label: "Participating Colleges", icon: "🏫" },
-                { value: "5000+", label: "Athletes & Participants", icon: "👥" },
-                { value: "₹10L+", label: "Prize Pool", icon: "💰" }
+                { 
+                  value: statsAnimated.current ? `${animatedStats.events}+` : "25+", 
+                  finalValue: "25+",
+                  label: "Sports Events", 
+                  icon: "🏆" 
+                },
+                { 
+                  value: statsAnimated.current ? `${animatedStats.colleges}+` : "100+", 
+                  finalValue: "100+",
+                  label: "Participating Colleges", 
+                  icon: "🏫" 
+                },
+                { 
+                  value: statsAnimated.current ? `${animatedStats.participants}+` : "5000+", 
+                  finalValue: "5000+",
+                  label: "Athletes & Participants", 
+                  icon: "👥" 
+                },
+                { 
+                  value: statsAnimated.current ? `₹${animatedStats.prizePool}L+` : "₹10L+", 
+                  finalValue: "₹10L+",
+                  label: "Prize Pool", 
+                  icon: "💰" 
+                }
               ].map((stat, i) => (
                 <Col lg={3} md={6} sm={6} xs={6} key={i}>
                   <motion.div
                     className="stat-card"
                     variants={statVariants}
                     custom={i}
+                    whileHover="hover"
                   >
                     <div className="stat-icon">{stat.icon}</div>
-                    <div className="stat-value">{stat.value}</div>
+                    <div className="stat-value">
+                      {statsAnimated.current ? stat.value : stat.finalValue}
+                    </div>
                     <div className="stat-label">{stat.label}</div>
                   </motion.div>
                 </Col>
