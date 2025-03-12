@@ -11,41 +11,28 @@ import adhyaay_logo_whitered from "../res/onlyaagaz.png";
 const Home = () => {
   const homeStyle = {
     height: "100vh",
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${back})`,
+    backgroundImage: `url(${back})`,
+    fontSize: "50px",
     backgroundSize: "cover",
-    backgroundPosition: "center",
-    color: "white",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    padding: "20px",
+    backgroundRepeat: "no-repeat",
   };
 
   const aboutStyle = {
-    padding: "50px 10%",
-    color: "#fff",
+    height: "auto",
+    width: "100%",
     backgroundImage:
-      "linear-gradient(to right, rgba(106, 17, 203, 0.8), rgba(37, 117, 252, 0.8)), url('https://dhruvil-lakhtaria.github.io/incident-2022/assets/img/xl.svg')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
+      "url('https://dhruvil-lakhtaria.github.io/incident-2022/assets/img/xl.svg'), url('https://dhruvil-lakhtaria.github.io/incident-2022/assets/img/sm.svg')",
   };
 
   return (
     <section>
       <center>
-        {/* Hero Section */}
-        <div style={homeStyle} className="animate-fade-in">
+        <div style={homeStyle} className="flex flex-col items-center justify-center">
           <Image
+            overflow="hidden"
             src={adhyaay_logo}
             rounded
             className="mainPageAdhyaayLogo"
-            style={{
-              width: "200px",
-              marginBottom: "20px",
-              boxShadow: "0px 4px 15px rgba(255, 0, 0, 0.5)",
-            }}
           />
           <Button
             variant="danger"
@@ -53,10 +40,7 @@ const Home = () => {
             style={{
               fontWeight: "600",
               borderRadius: "10px",
-              transition: "all 0.3s ease-in-out",
             }}
-            onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
-            onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
           >
             <a
               style={{
@@ -64,13 +48,13 @@ const Home = () => {
                 fontWeight: "600",
                 color: "white",
                 display: "block",
-                padding: "10px",
+                padding: "5px",
               }}
               href="https://forms.fillout.com/t/7eJkvXYn6jus"
               target="_blank"
               rel="noopener noreferrer"
             >
-              🚀 Register Now
+              Register Now
             </a>
           </Button>
         </div>
@@ -79,32 +63,56 @@ const Home = () => {
         <div style={aboutStyle}>
           <div className="aboutStyleGrid">
             <div className="aboutStyleGridText">
-              <h1 style={{ color: "#ffcc00" }}>
-                ⚡ AAGAZ'25 – The Ultimate Celebration of Sports & Innovation
-              </h1>
-              <p style={{ fontSize: "18px", lineHeight: "1.6" }}>
-                AAGAZ'25, HBTU Kanpur's annual sports fest, is set to be **bigger and
-                better than ever!** 🎉 Led by{" "}
-                <span style={{ color: "#ff5733", fontWeight: "bold" }}>
-                  Akhilesh Yadav and Awantika
-                </span>, this grand event continues the legacy of AAGAZ'24.
+              <h1>AAGAZ'25 – The Ultimate Celebration of Sports & Innovation</h1>
+              <br />
+              <p>
+                AAGAZ'25, HBTU Kanpur's annual sports fest, promises an even grander celebration of
+                sportsmanship, competition, and innovation. Led by{" "}
+                <strong>Secretary Akhilesh Yadav and Awantika</strong>, 4th-year B.Tech students, the event builds upon the phenomenal success of
+                AAGAZ'24.
               </p>
-              <h2 style={{ color: "#ffcc00" }}>🔥 Why AAGAZ'25?</h2>
-              <ul style={{ textAlign: "left", paddingLeft: "20px" }}>
-                <li>🏆 Thrilling inter-college sports competitions</li>
-                <li>🎭 Cultural extravaganza</li>
-                <li>💡 Tech & Innovation Integration</li>
-              </ul>
+
+              <p>
+                This mega inter-college sports fest, initiated by the <strong>Sports Sub-Council</strong>,
+                brings together a diverse range of sporting events under one dynamic platform.
+                <strong> AAGAZ'25 is not just a competition but a movement</strong>—fostering athletic
+                excellence, teamwork, and groundbreaking ideas.
+              </p>
+
+              <p>
+                Under the leadership of <strong>Akhilesh and Awantika</strong>, the organizing team ensures
+                a seamless experience for athletes and participants. <strong>Mohammad Tauqeer and Sahil
+                Sakoor</strong>, the technical heads and creators of the event's website, continue to add an
+                innovative digital touch, enhancing the online experience for participants and sponsors. The
+                fest's success is further attributed to the meticulous planning and management of
+                <strong> Abhishek Mishra and Dev Chitousia</strong>.
+              </p>
+
+              <p>
+                Together, <strong>Akhilesh, Tauqeer, Abhishek, Dev, Sahil, and Awantika</strong> blend
+                sportsmanship, management, and technology to create an electrifying platform for athletes
+                and a unique branding opportunity for sponsors.
+              </p>
+
+              <h2>Get ready for AAGAZ'25 – where sports meet innovation like never before!</h2>
+              <br />
+
+              <p>
+                AAGAZ'25 is set to be a <strong>bigger and better</strong> version of its predecessor,
+                AAGAZ'24, which was a resounding success. This event presents an invaluable opportunity for
+                <strong> brands to showcase themselves</strong> to a vibrant, youthful audience driven by
+                <strong> innovation and competition</strong>.
+              </p>
             </div>
+
+            {/* About Section Image */}
             <div className="aboutStyleGridPic">
               <Image
+                overflow="hidden"
                 src={adhyaay_logo_whitered}
                 rounded
-                style={{
-                  height: "200px",
-                  width: "230px",
-                  boxShadow: "0px 4px 15px rgba(255, 255, 255, 0.3)",
-                }}
+                style={{ height: "200px", width: "230px" }}
+                className="adhyaayLogo"
               />
             </div>
           </div>
