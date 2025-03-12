@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Container, Row, Col } from "react-bootstrap";
@@ -33,8 +33,8 @@ const Home = () => {
   const [statsRef, statsInView] = useInView({ threshold: 0.2, triggerOnce: true });
   const [eventsRef, eventsInView] = useInView({ threshold: 0.2, triggerOnce: true });
 
-  // Event date - set to a future date
-  const eventDate = new Date('2025-02-15T00:00:00');
+  // Event date - wrapped in useMemo to prevent recreation on every render
+  const eventDate = useMemo(() => new Date('2025-04-15T00:00:00'), []);
 
   // State for animated stat values
   const [animatedStats, setAnimatedStats] = useState({
@@ -218,7 +218,7 @@ const Home = () => {
     {
       id: 1,
       name: "Valorant Tournament",
-      date: "Feb 16, 2025",
+      date: "Apr 16, 2025",
       description: "Compete in the region's biggest Valorant tournament with teams from all over India.",
       image: sportIcon1,
       category: "Esports"
@@ -226,7 +226,7 @@ const Home = () => {
     {
       id: 2,
       name: "BGMI Championship",
-      date: "Feb 17, 2025",
+      date: "Apr 17, 2025",
       description: "Battle it out in BGMI for incredible prizes and glory in this esports extravaganza.",
       image: sportIcon2,
       category: "Esports"
@@ -305,6 +305,36 @@ const Home = () => {
             style={{
               width: Math.random() * 3 + 1,
               height: Math.random() * 3 + 1
+            }}
+          />
+        ))}
+      </div>
+    );
+  };
+
+  // Digital data flow animation
+  const DataFlowAnimation = () => {
+    return (
+      <div className="stats-data-flow">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <motion.div
+            key={`horizontal-${index}`}
+            className="data-particle"
+            style={{
+              '--y': `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          />
+        ))}
+        {Array.from({ length: 10 }).map((_, index) => (
+          <motion.div
+            key={`vertical-${index}`}
+            className="data-particle-vertical"
+            style={{
+              '--x': `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`
             }}
           />
         ))}
@@ -552,7 +582,9 @@ const Home = () => {
       {/* Statistics Section */}
       <section className="stats-section" ref={statsRef} id="stats-section">
         <div className="stats-overlay"></div>
+        <div className="stats-circuit"></div>
         <StatsParticleBackground />
+        <DataFlowAnimation />
         <Container>
           <motion.div
             variants={staggerContainer}

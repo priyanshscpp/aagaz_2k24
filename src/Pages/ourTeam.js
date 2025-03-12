@@ -1,188 +1,256 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaInstagram, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa';
 import "./style/team.css";
 import { Card } from "../Components/Card.js";
-import faiz from "./images/faiz.png"
-    import namrata from "./images/namrata.jpg"
-    import sahil from "./images/sahil technical.jpg"
-    import haza from "./images/finance.jpg"
-    import sonu from "./images/event sonu.png"
-    import ehram from "./images/ehram marketing.jpeg"
-    import aryan from "./images/event aryan.jpg"
-    import ruchi from "./images/ruchi publicity.jpeg"
-    import vikas from "./images/vikas event.jpg"
-    import ashutosh from "./images/pr ashutosh.jpg"
-    import subodh from "./images/event subodh.jpg"
-   
-    
-function Team() {
-  return (
-    <div className="App">
-        <div style={{gridColumn:"1/-1"}}><h2>Meet Our Team</h2></div>
 
-      <div id="asas">
-        <Card
-          imgSrc={faiz}
-          imgAlt="Card Image 1"
-          title="Students Secretary"
-          description="This is the card description section. You can add more details about the product here"
-          buttonText="Learn More"
-           name="Pathan Faiz"
-           
-           ilink="https://www.instagram.com/alfai.zu07/"
-           llink="https://www.linkedin.com/in/faiz-khan-a08644229/"
-           elink="aagaz24official@gmail.com"
-           plink="tel:+916393743138"
-           
-           />
-        <Card
-          imgAlt="Card Image 2"
-          imgSrc={namrata}
-          description="This is the card description section. You can add more details about the product here"
-          buttonText="Learn More"
-          link="card2"
-          name="Namrata"
-          ilink="https://www.instagram.com/tishaaachaudhary"
-          llink="https://www.linkedin.com/in/namrata-singh-75a88322b/"
-          elink="mailto:210113028@hbtu.ac.in"
-          title="Students Secretary"
-          plink="tel:+919548499530"
-        />
+// Import team member images
+import faiz from "./images/faiz.png";
+import namrata from "./images/namrata.jpg";
+import sahil from "./images/sahil technical.jpg";
+import haza from "./images/finance.jpg";
+import sonu from "./images/event sonu.png";
+import ehram from "./images/ehram marketing.jpeg";
+import aryan from "./images/event aryan.jpg";
+import ruchi from "./images/ruchi publicity.jpeg";
+import vikas from "./images/vikas event.jpg";
+import ashutosh from "./images/pr ashutosh.jpg";
+import subodh from "./images/event subodh.jpg";
+
+const Team = () => {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.5 }
+    }
+  };
+
+  // Intersection observer for scroll animations
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
+
+  // Team members data
+  const leadershipTeam = [
+    {
+      id: 1,
+      name: "Pathan Faiz",
+      role: "Students Secretary",
+      image: faiz,
+      description: "Leading the AAGAZ'25 organizing committee with vision and dedication.",
+      instagram: "https://www.instagram.com/alfai.zu07/",
+      linkedin: "https://www.linkedin.com/in/faiz-khan-a08644229/",
+      email: "aagaz24official@gmail.com",
+      phone: "+916393743138"
+    },
+    {
+      id: 2,
+      name: "Namrata",
+      role: "Students Secretary",
+      image: namrata,
+      description: "Coordinating all aspects of AAGAZ'25 with exceptional organizational skills.",
+      instagram: "https://www.instagram.com/tishaaachaudhary",
+      linkedin: "https://www.linkedin.com/in/namrata-singh-75a88322b/",
+      email: "210113028@hbtu.ac.in",
+      phone: "+919548499530"
+    }
+  ];
+
+  const teamMembers = [
+    {
+      id: 3,
+      name: "Sahil",
+      role: "Technical Head",
+      image: sahil,
+      description: "Managing all technical aspects of AAGAZ'25 with expertise and innovation.",
+      instagram: "#",
+      linkedin: "#",
+      email: "example@hbtu.ac.in",
+      phone: "+91XXXXXXXXXX"
+    },
+    {
+      id: 4,
+      name: "Haza",
+      role: "Finance Head",
+      image: haza,
+      description: "Overseeing the financial planning and budget management for AAGAZ'25.",
+      instagram: "#",
+      linkedin: "#",
+      email: "example@hbtu.ac.in",
+      phone: "+91XXXXXXXXXX"
+    },
+    {
+      id: 5,
+      name: "Sonu",
+      role: "Event Coordinator",
+      image: sonu,
+      description: "Coordinating all events and ensuring smooth execution during AAGAZ'25.",
+      instagram: "#",
+      linkedin: "#",
+      email: "example@hbtu.ac.in",
+      phone: "+91XXXXXXXXXX"
+    },
+    {
+      id: 6,
+      name: "Ehram",
+      role: "Marketing Head",
+      image: ehram,
+      description: "Leading the marketing strategies and promotions for AAGAZ'25.",
+      instagram: "#",
+      linkedin: "#",
+      email: "example@hbtu.ac.in",
+      phone: "+91XXXXXXXXXX"
+    },
+    {
+      id: 7,
+      name: "Aryan",
+      role: "Event Manager",
+      image: aryan,
+      description: "Managing event logistics and coordination for AAGAZ'25.",
+      instagram: "#",
+      linkedin: "#",
+      email: "example@hbtu.ac.in",
+      phone: "+91XXXXXXXXXX"
+    },
+    {
+      id: 8,
+      name: "Ruchi",
+      role: "Publicity Head",
+      image: ruchi,
+      description: "Leading the publicity and outreach efforts for AAGAZ'25.",
+      instagram: "#",
+      linkedin: "#",
+      email: "example@hbtu.ac.in",
+      phone: "+91XXXXXXXXXX"
+    },
+    {
+      id: 9,
+      name: "Vikas",
+      role: "Event Coordinator",
+      image: vikas,
+      description: "Coordinating sports events and competitions during AAGAZ'25.",
+      instagram: "#",
+      linkedin: "#",
+      email: "example@hbtu.ac.in",
+      phone: "+91XXXXXXXXXX"
+    },
+    {
+      id: 10,
+      name: "Ashutosh",
+      role: "PR Head",
+      image: ashutosh,
+      description: "Managing public relations and external communications for AAGAZ'25.",
+      instagram: "#",
+      linkedin: "#",
+      email: "example@hbtu.ac.in",
+      phone: "+91XXXXXXXXXX"
+    },
+    {
+      id: 11,
+      name: "Subodh",
+      role: "Event Manager",
+      image: subodh,
+      description: "Overseeing event planning and execution for AAGAZ'25.",
+      instagram: "#",
+      linkedin: "#",
+      email: "example@hbtu.ac.in",
+      phone: "+91XXXXXXXXXX"
+    }
+  ];
+
+  // Background particles component
+  const TeamParticleBackground = () => {
+    return (
+      <div className="team-particles"></div>
+    );
+  };
+
+  // Team member card component
+  const TeamCard = ({ member }) => {
+    return (
+      <motion.div 
+        className="team-card"
+        variants={itemVariants}
+      >
+        <img src={member.image} alt={member.name} className="team-card-image" />
+        <div className="team-card-content">
+          <h3 className="team-card-title">{member.name}</h3>
+          <p className="team-card-role">{member.role}</p>
+          <p className="team-card-description">{member.description}</p>
+          <div className="team-social-links">
+            <a href={member.instagram} target="_blank" rel="noopener noreferrer" className="team-social-link">
+              <FaInstagram />
+            </a>
+            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="team-social-link">
+              <FaLinkedin />
+            </a>
+            <a href={`mailto:${member.email}`} className="team-social-link">
+              <FaEnvelope />
+            </a>
+            <a href={`tel:${member.phone}`} className="team-social-link">
+              <FaPhone />
+            </a>
+          </div>
         </div>
-        <Card
-               imgSrc={sahil}
+      </motion.div>
+    );
+  };
 
-          imgAlt="Card Image 3"
-          description="This is the card description section. You can add more details about the product here"
-          buttonText="Learn More"
-          name="Sahil"
-          ilink="https://instagram.com/sahilshakoor786"
-          llink="https://in.linkedin.com/in/sahil-shakoor-270091145"
-          elink="mailto:sahilshakoor@gmail.com"
-          title="Technical Head"
-          plink="tel:+916392063720"
-        />
+  return (
+    <div className="team-container">
+      <TeamParticleBackground />
       
-        <Card
-               imgSrc={haza}
+      <Container>
+        <motion.div
+          className="team-header"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="team-title">Meet Our Team</h1>
+          <p className="team-subtitle">
+            The dedicated individuals behind AAGAZ'25 who work tirelessly to make this event a grand success.
+          </p>
+        </motion.div>
 
-          imgAlt="Card Image 1"
-          title="Finance Head"
-          buttonText="Learn More"
-          link="card1"
-          name="Haza"
-          ilink="https://www.instagram.com/haza_rahman_/"
-          llink="https://www.linkedin.com/in/haza-rahman-b5a7b7243/"
-          elink="mailto:hazarahma001@gmail.com"
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          ref={ref}
+        >
+          <div className="team-leadership">
+            {leadershipTeam.map(member => (
+              <TeamCard key={member.id} member={member} />
+            ))}
+          </div>
           
-          plink="tel:+916392063720"
-        />
-        <Card
-                imgSrc={sonu}
-
-          imgAlt="Card Image 3"
-          title="Events Head"
-          description="This is the card description section. You can add more details about the product here"
-          buttonText="Learn More"
-          link="card2"
-          name="Sonu"
-          ilink="https://www.instagram.com/_sonu_chaudhary_8"
-          llink="https://www.linkedin.com/in/sonu-chaudhary-0625a7249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-          elink="mailto:mrjatt8741@gmail.com"
-          
-          plink="tel:+918306122928"
-        />
-
-        <Card
-                imgSrc={aryan}
-
-                imgAlt="Card Image 3"
-                description="This is the card description section. You can add more details about the product here"
-                buttonText="Learn More"
-                name="Aryan"
-                ilink="https://www.instagram.com/ydv_hrk_13"
-                llink="http://linkedin.com/in/aryan-yadav-43945b270"
-                elink="mailto:yadavaryan0910@gmail.com"
-                title="Events Head"
-                plink="tel:+919587572188"
-              
-        />
-
-
-        <Card
-               imgSrc={vikas}
-
-               imgAlt="Card Image 3"
-               description="This is the card description section. You can add more details about the product here"
-               buttonText="Learn More"
-               name="Vikas"
-               ilink="https://www.instagram.com/vikas_kgo"
-               llink="https://www.linkedin.com/in/vikas-gupta-6a19b5222?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-               elink="mailto:21010073@hbtu.ac.in"
-               title="Events Head"
-               plink="tel:+916367791036"
-             />
-
-          <Card
-               imgSrc={subodh}
-
-               imgAlt="Card Image 3"
-               description="This is the card description section. You can add more details about the product here"
-               buttonText="Learn More"
-               name="Subodh"
-               ilink="https://www.instagram.com/subodh_gangwar_/"
-               llink="https://www.linkedin.com/in/subodh-gangwar-b33b05165/"
-               elink="mailto:sahilshakoor@gmail.com"
-               title="Events Head"
-               plink="tel:+916392063720"
-             />
-
-        <Card
-          imgAlt="Card Image 3"
-          imgSrc={ehram}
-          title="Marketing Head"
-          description="This is the card description section. You can add more details about the product here"
-          link="card2"
-          name="Ehram"
-          ilink="https://www.instagram.com/ehram07"
-          llink="https://in.linkedin.com/in/sahil-shakoor-270091145"
-          elink="mailto:ehram003@gmail.com"
-        
-          plink="tel:+919648061004"
-        />
-
-      
-
-        <Card
-                imgSrc={ruchi}
-
-                imgAlt="Card Image 3"
-                description="This is the card description section. You can add more details about the product here"
-                buttonText="Learn More"
-                name="Ruchi"
-                ilink="https://www.instagram.com/ruhisingh1066"
-                llink="https://in.linkedin.com/in/sahil-shakoor-270091145"
-                elink="mailto:ruchi.singh00002@gmail.com"
-                title="Publicity Head"
-                plink="tel:+917302340431"
-              
-        />
-        <Card
-               imgSrc={ashutosh}
-
-               imgAlt="Card Image 3"
-               description="This is the card description section. You can add more details about the product here"
-               buttonText="Learn More"
-               name="Ashutosh"
-               ilink="https://www.instagram.com/ashutosh_singh_sambyal"
-               llink="https://www.linkedin.com/in/ashutosh-singh-144020258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-               elink="mailto:divusingh1004@gmail.com"
-               title="Public Relations Head"
-               plink="tel:+917006535057"
-             />
-              
-            
-
+          <div className="team-grid">
+            {teamMembers.map(member => (
+              <TeamCard key={member.id} member={member} />
+            ))}
+          </div>
+        </motion.div>
+      </Container>
     </div>
   );
-}
+};
 
 export default Team;

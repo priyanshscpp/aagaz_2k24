@@ -4,10 +4,10 @@
   display: flex;
   align-items: center;
   width: 80vw !important;
-  background: transparent !important;
+  background: rgba(0, 0, 0, 0.7) !important; /* More visible background */
   backdrop-filter: blur(5px) !important;
   border: 1px solid rgba(255, 255, 255, 0.03) !important;
-  top: 30px !important;
+  top: 20px !important; /* Moved slightly higher */
   left: 50% !important;
   transform: translateX(-50%) !important;
   position: fixed !important;
@@ -16,7 +16,7 @@
   transition: all 0.3s ease-in-out !important;
   padding: 15px !important;
   margin: 0 auto !important;
-  box-shadow: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important; /* Added subtle shadow */
 }
 
 /* Remove any potential background elements */
@@ -28,7 +28,7 @@
 }
 
 .navbar:hover, .custom-navbar:hover {
-  background: rgba(255, 255, 255, 0.03) !important;
+  background: rgba(0, 0, 0, 0.8) !important;
   border-color: rgba(255, 255, 255, 0.08) !important;
   backdrop-filter: blur(8px) !important;
 }
@@ -243,5 +243,21 @@ html {
     border-radius: 10px;
     padding: 1rem;
     margin-top: 1rem;
+  }
+}
+
+/* Add padding to all page containers to prevent navbar overlap */
+.eventStyle1, .eventStyle2, .eventStyle3,
+.team-container, .gallery-container, .merch-container,
+.sponsors-container, .esports-container {
+  padding-top: 120px !important; /* Ensure content starts below navbar */
+}
+
+/* Specific adjustments for mobile */
+@media (max-width: 576px) {
+  .eventStyle1, .eventStyle2, .eventStyle3,
+  .team-container, .gallery-container, .merch-container,
+  .sponsors-container, .esports-container {
+    padding-top: 80px !important;
   }
 }
