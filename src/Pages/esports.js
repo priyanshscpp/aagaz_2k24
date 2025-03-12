@@ -1,113 +1,271 @@
 // index.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './style/esports.css'; 
 import muthi from "../res/bgmichar.png";
-import { useEffect } from 'react';
-import { Image } from 'react-bootstrap';
+import valorantImg from "../res/valorant.jpg";
+import bgmiImg from "../res/bgmi.jpg";
+import codImg from "../res/cod.jpg";
+import { Image, Container } from 'react-bootstrap';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { FaCalendarAlt, FaTrophy } from 'react-icons/fa';
 
 const Esports = () => {
-  useEffect(() => {
-    window.addEventListener('resize', function () {
-      var windowWidth = window.innerWidth;
-      if (windowWidth <= 956) {
-        document.getElementById('navmenuButton')?.classList?.remove('hidden');
-        document.getElementById('nav-menu')?.classList?.add('hidden');
-      } else {
-        document.getElementById('navmenuButton')?.classList?.add('hidden');
-        document.getElementById('nav-menu')?.classList?.remove('hidden');
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.2,
+        delayChildren: 0.3
       }
-    });
-  }, []); 
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  // Intersection observer for scroll animations
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
+
+  // State for image loading status
+  const [imagesLoaded, setImagesLoaded] = useState({
+    bgmi: false,
+    valorant: false,
+    cod: false,
+    char: false,
+    bg: false,
+    gamingBg: false
+  });
+
+  useEffect(() => {
+    // Mobile menu handling
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      const navMenuButton = document.getElementById('navmenuButton');
+      const navMenu = document.getElementById('nav-menu');
+      
+      if (windowWidth <= 956) {
+        navMenuButton?.classList?.remove('hidden');
+        navMenu?.classList?.add('hidden');
+      } else {
+        navMenuButton?.classList?.add('hidden');
+        navMenu?.classList?.remove('hidden');
+      }
+    };
+
+    // Check if background images exist
+    const checkBackgroundImages = async () => {
+      try {
+        const bgResponse = await fetch('../../res/bgmibg.jpg');
+        const gamingBgResponse = await fetch('../../res/gamingbg.jpg');
+        
+        setImagesLoaded(prev => ({
+          ...prev,
+          bg: bgResponse.ok,
+          gamingBg: gamingBgResponse.ok
+        }));
+      } catch (error) {
+        console.warn('Background images not found:', error);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    checkBackgroundImages();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Game data
+  const games = [
+    {
+      id: 1,
+      title: "Valorant",
+      description: "Compete in the region's biggest Valorant tournament with teams from all over India. Show your tactical prowess and aim skills!",
+      image: valorantImg,
+      date: "April 16-17, 2025",
+      prize: "₹50,000"
+    },
+    {
+      id: 2,
+      title: "BGMI",
+      description: "Battle it out in BGMI for incredible prizes and glory in this esports extravaganza. Will your squad be the last one standing?",
+      image: bgmiImg,
+      date: "April 18-19, 2025",
+      prize: "₹30,000"
+    },
+    {
+      id: 3,
+      title: "Call of Duty",
+      description: "Join the Call of Duty tournament and showcase your skills in this fast-paced FPS competition with teams from across the country.",
+      image: codImg,
+      date: "April 20, 2025",
+      prize: "₹20,000"
+    }
+  ];
+
+  const openRegistration = () => {
+    alert("Registration will open soon! Stay tuned for updates.");
+  };
+
+  // Handle image load errors
+  const handleImageError = (imageKey) => {
+    setImagesLoaded(prev => ({ ...prev, [imageKey]: false }));
+  };
+
+  const handleImageLoad = (imageKey) => {
+    setImagesLoaded(prev => ({ ...prev, [imageKey]: true }));
+  };
 
   return (
-    <html lang="en">
-    <head>
-      <meta charSet="UTF-8" /> 
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>E-Sports | Aagaz</title>
-      <link rel="stylesheet" href="style.css" />
-      <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" /> 
-      <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet" />
-    </head>
-    <body>
-      <header>
-       {/* Header content */}
-      </header>
-      <main>
-        <div style={{display:'flex',alignItems:"center",justifyContent:"center"}} className="main-cont">
-          <div id="espmain">
-            <a href='#register' style={{outline:"none",color:"white",textDecoration:"none"}} aria-label="Register for esports event">
-              <h2 style={{color:"white",outline:"none !important",textDecoration:"none"}}>
-                Register Now
-              </h2>
-            </a>
-          </div>
-          <Image className="bgmi-char" alt="BGMI character" src={muthi} />
-          <h1 className="why-esport">
-            Esports Competition
-          </h1>
+    <div className="esports-container">
+      {/* Animated background elements */}
+      <div className="esports-bg"></div>
+      <div className="esports-grid"></div>
+      
+      {/* Hero section */}
+      <section className={`main-cont ${imagesLoaded.bg ? 'with-bg' : ''}`}>
+        <div className="hero-content">
+          <motion.h1 
+            className="why-esport"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            Esports Championship
+          </motion.h1>
+          <motion.div 
+            id="espmain"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <motion.button
+              onClick={openRegistration}
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <h2>Register Now</h2>
+            </motion.button>
+          </motion.div>
         </div>
-        <div className="cont2">
-          <h1 className="fancy-text">Valorant</h1> 
-          <div className="pbg">
-            <p className="about-udghosh">
-              <span className="udgosh">AAGAZ</span> is the annual flagship sports festival organized by HBTU
-              Kanpur, which is widely celebrated as one of the largest fest of its
-              kind in India. It's a great way for students to refine their talents
-              while also embracing the ferocious drive and dedication to
-              perfection that define a successful athlete. Udghosh plans many
-              sporting and electronic sports events to bring together the greatest
-              collegiate athletes in the country.
-            </p>
-          </div>
-        </div>
-{/* 
-              <div className="upcoming-events">
-          <h1 className="upcoming">EVENTS</h1>
-          <div className="events-name">
-            <div className="event event1" onMouseEnter={handleMouseEnter} onMouseLeave={removemouseleave}>
-              <div>
-                <div className="event-overlay hidden" id="event-overlay">
-                  <p className="text-bgmi">BGMI, or Battlegrounds Mobile India, is a popular battle royale game developed by
-                    Krafton. It offers a thrilling gaming
-                    experience where players fight to be the last one standing on a remote island. With various modes,
-                    weapons, and
-                    vehicles, it's a favorite for online gaming competitions, attracting millions of players in India.<br />
-                    <button className="register" onClick={openRegistration}>Register</button>
-                  </p>
-                </div>
-                <Image className="bgmi-char"  alt="muthi" src={lund} />
-              </div>
-            </div>
-            <div className="event event1" onMouseEnter={handleMouseEnter1} onMouseLeave={removemouseleave1}>
-              <div>
-                <div className="event-overlay hidden" id="event-overlay2">
-                  <p className="text-bgmi">Call of Duty (COD) is a popular first-person shooter game franchise developed by Activision. It offers a wide range of
-                    games, including the Modern Warfare and Black Ops series, set in various historical and fictional settings. COD is known
-                    for its fast-paced action, realistic graphics, and immersive multiplayer experience, making it a favorite among gamers
-                    worldwide.<button className="register" onClick={openRegistration}>Register</button>
-                  </p>
-                </div>
-                <img src="https://drive.google.com/thumbnail?id=1XSvqc6KYwxzH_jthclx19yYg2C4EIpRJ" alt="assa"/>
-              </div>
-            </div>
-          </div>
-        </div>
+        {muthi && (
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
+          >
+            <Image 
+              className="bgmi-char" 
+              src={muthi} 
+              alt="BGMI character"
+              loading="lazy"
+              onError={() => handleImageError('char')}
+              onLoad={() => handleImageLoad('char')}
+              style={{ display: imagesLoaded.char ? 'block' : 'none' }}
+            />
+          </motion.div>
+        )}
+        
+        {/* Glow effects */}
+        <div className="glow-effect" style={{ top: '20%', left: '10%' }} />
+        <div className="glow-effect" style={{ top: '60%', right: '15%' }} />
+        <div className="glow-effect" style={{ bottom: '10%', left: '20%' }} />
+      </section>
 
-        <div className="cont5">
-          <h2>Past Events</h2>
-          <div className="hover-effect1"></div>
-          <div className="hover-effect2"></div>
-          <div className="hover-effect3"></div>
-          <div className="hover-effect4"></div>
-          <div className="hover-effect5"></div>
-        </div> */}
-      </main>
-      <script src="https://kit.fontawesome.com/73c26b4bc1.js" crossOrigin="anonymous"></script>
-    </body>
-    </html>
+      {/* Events section */}
+      <motion.section 
+        className={`upcoming-events ${imagesLoaded.gamingBg ? 'with-bg' : ''}`}
+        ref={ref}
+        variants={containerVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+      >
+        <h1 className="upcoming">Featured Games</h1>
+        <div className="events-name">
+          {games.map((game) => (
+            <motion.div 
+              key={game.id}
+              className="event"
+              variants={itemVariants}
+              whileHover={{ y: -10 }}
+            >
+              <div className="event1">
+                <Image 
+                  className="game-image" 
+                  src={game.image} 
+                  alt={game.title}
+                  loading="lazy"
+                  onError={() => handleImageError(game.title.toLowerCase())}
+                  onLoad={() => handleImageLoad(game.title.toLowerCase())}
+                />
+                <motion.div
+                  className="event-overlay"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                >
+                  <h3 style={{ 
+                    color: 'var(--esports-primary)',
+                    fontFamily: 'Orbitron, sans-serif',
+                    marginBottom: '1rem'
+                  }}>
+                    {game.title}
+                  </h3>
+                  <p className="text-bgmi">
+                    {game.description}
+                    <br />
+                    <span style={{ 
+                      display: 'block', 
+                      marginTop: '10px', 
+                      color: 'var(--esports-accent)',
+                      fontWeight: 'bold' 
+                    }}>
+                      <FaCalendarAlt style={{ marginRight: '5px' }} /> {game.date}
+                    </span>
+                    <span style={{ 
+                      display: 'block', 
+                      marginTop: '5px',
+                      color: 'var(--esports-secondary)',
+                      fontWeight: 'bold' 
+                    }}>
+                      <FaTrophy style={{ marginRight: '5px' }} /> Prize: {game.prize}
+                    </span>
+                  </p>
+                  <motion.button 
+                    className="register"
+                    onClick={openRegistration}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Register Now
+                  </motion.button>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Registration section */}
+      <motion.section 
+        id="register"
+        className="register-section"
+        ref={ref}
+        variants={containerVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+      >
+      </motion.section>
+    </div>
   );
 };
 

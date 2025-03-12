@@ -261,3 +261,40 @@ html {
     padding-top: 80px !important;
   }
 }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 2rem;
+  transition: all 0.3s ease;
+}
+
+/* Add padding to main content containers to prevent navbar overlap */
+.esports-container,
+.eventStyle1,
+.team-container,
+.gallery-container,
+.sponsors-container {
+  padding-top: 80px !important;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.3rem 1rem;
+  }
+  
+  .esports-container,
+  .eventStyle1,
+  .team-container,
+  .gallery-container,
+  .sponsors-container {
+    padding-top: 60px !important;
+  }
+}
