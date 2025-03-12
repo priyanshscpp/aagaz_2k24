@@ -111,7 +111,7 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <p className="love-message">
-              Made with <FaHeart className="heart-icon" /> by Technical Team
+              Designed and Developed with <FaHeart className="heart-icon" /> by Prateek Srivastava
             </p>
           </motion.div>
         </div>

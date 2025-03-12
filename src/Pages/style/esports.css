@@ -688,6 +688,24 @@ body {
   backface-visibility: hidden;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--esports-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--esports-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--esports-secondary);
+}
+
 /* Additional Effects */
 .glow-effect {
   position: absolute;
@@ -709,22 +727,4 @@ body {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--esports-darker);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--esports-primary);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--esports-secondary);
 }

@@ -32,8 +32,8 @@ const Esports = () => {
     }
   };
 
-  // Intersection observer for scroll animations
-  const [ref, inView] = useInView({
+  // Intersection observers for scroll animations
+  const [eventsRef, eventsInView] = useInView({
     threshold: 0.1,
     triggerOnce: true
   });
@@ -185,10 +185,10 @@ const Esports = () => {
       {/* Events section */}
       <motion.section 
         className={`upcoming-events ${imagesLoaded.gamingBg ? 'with-bg' : ''}`}
-        ref={ref}
+        ref={eventsRef}
         variants={containerVariants}
         initial="hidden"
-        animate={inView ? "visible" : "hidden"}
+        animate={eventsInView ? "visible" : "hidden"}
       >
         <h1 className="upcoming">Featured Games</h1>
         <div className="events-name">
@@ -253,17 +253,6 @@ const Esports = () => {
             </motion.div>
           ))}
         </div>
-      </motion.section>
-
-      {/* Registration section */}
-      <motion.section 
-        id="register"
-        className="register-section"
-        ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-      >
       </motion.section>
     </div>
   );
