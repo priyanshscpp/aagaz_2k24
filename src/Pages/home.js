@@ -82,24 +82,53 @@ const home = () => {
           </Button>
         </div>
         <div style={aboutStyle}>
-          <div className="aboutStyleGrid">
-            <div className="aboutStyleGridText">
-              <h1>About</h1>
-              <br></br>
-              <p>
-              AAGAZ'24, HBTU Kanpur's annual sports fest, promises a spectacular celebration of sportsmanship, competition, and innovation. Led by Secretary Faiz Khan and Namrata Singh 3rd-year B.Tech students, the event builds upon the success of AAGAZ'23. This mega Inter-College sports fest, initiated by the Sports Sub-Council, consolidates various sports events under one grand umbrella, representing a significant evolution.
+  <div className="aboutStyleGrid">
+    <div className="aboutStyleGridText">
+      <h1>AAGAZ'25 – The Ultimate Celebration of Sports & Innovation</h1>
+      <br />
+      <p>
+        AAGAZ'25, HBTU Kanpur's annual sports fest, promises an even grander celebration of
+        sportsmanship, competition, and innovation. Led by <strong>Secretary Akhilesh Yadav and
+        Awantika</strong>, 4th-year B.Tech students, the event builds upon the phenomenal success of
+        AAGAZ'24.
+      </p>
 
-              AAGAZ'24 provides a platform for athletes and a unique opportunity for brands to align with innovation and youth. With a focus on promoting sportsmanship and healthy competition, it's set to become a highlight on the university calendar.
+      <p>
+        This mega inter-college sports fest, initiated by the <strong>Sports Sub-Council</strong>,
+        brings together a diverse range of sporting events under one dynamic platform.
+        <strong> AAGAZ'25 is not just a competition but a movement</strong>—fostering athletic
+        excellence, teamwork, and groundbreaking ideas.
+      </p>
 
-             Under the leadership of Faiz and Namrata, the organizing team ensures a seamless experience. Additionally Sahil Shakoor, the technical head and creator of the event's website, adds an innovative layer, ensuring a smooth online experience for participants and sponsors. The fest's success is further attributed to the meticulous management and preplanning led by Haza Rehman.
+      <p>
+        Under the leadership of <strong>Akhilesh and Awantika</strong>, the organizing team ensures
+        a seamless experience for athletes and participants. <strong>Mohammad Tauqeer and Sahil
+        Sakoor</strong>, the technical heads and creators of the event's website, continue to add an
+        innovative digital touch, enhancing the online experience for participants and sponsors. The
+        fest's success is further attributed to the meticulous planning and management of
+        <strong> Abhishek Mishra and Dev Chitousia</strong>.
+      </p>
 
-             Together Faiz, Haza, Sahil and Namrata  blend sportsmanship, management and technology creating an exciting platform for athletes and a unique advertising opportunity. Get ready for AAGAZ'24 – where sports meet innovation!
-                <br></br>
-                <br />
-                AAGAZ'24 will be a new & better version of AAGAZ'23 which was a
-                successful event. This will be an invaluable opportunity for
-                brands to advertise themselves in front of the innovative lads.
-              </p>
+      <p>
+        Together, <strong>Akhilesh, Tauqeer, Abhishek, Dev, Sahil, and Awantika</strong> blend
+        sportsmanship, management, and technology to create an electrifying platform for athletes
+        and a unique branding opportunity for sponsors.
+      </p>
+
+      <h2>Get ready for AAGAZ'25 – where sports meet innovation like never before!</h2>
+      <br />
+
+      <p>
+        AAGAZ'25 is set to be a <strong>bigger and better</strong> version of its predecessor,
+        AAGAZ'24, which was a resounding success. This event presents an invaluable opportunity for
+        <strong> brands to showcase themselves</strong> to a vibrant, youthful audience driven by
+        <strong> innovation and competition</strong>.
+      </p>
+    </div>
+  </div>
+</div>
+
+
             </div>
             <div className="aboutStyleGridPic">
               <Image
