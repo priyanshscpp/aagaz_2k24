@@ -1,11 +1,7 @@
 // index.jsx
-
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './style/esports.css'; // Import your CSS file here
-import muthi from "../res/bgmichar.png"
-import lund from "../res/bgmievent.png"
-import bg from "../res/phbg.JPG"
+import './style/esports.css'; 
+import muthi from "../res/bgmichar.png";
 import { useEffect } from 'react';
 import { Image } from 'react-bootstrap';
 
@@ -13,9 +9,7 @@ const Esports = () => {
   useEffect(() => {
     window.addEventListener('resize', function () {
       var windowWidth = window.innerWidth;
-
       if (windowWidth <= 956) {
-
         document.getElementById('navmenuButton')?.classList?.remove('hidden');
         document.getElementById('nav-menu')?.classList?.add('hidden');
       } else {
@@ -23,94 +17,40 @@ const Esports = () => {
         document.getElementById('nav-menu')?.classList?.remove('hidden');
       }
     });
-  })
-    let x = 0;
-
-    function togglenavbar() {
-      if (x === 0) {
-        x = x + 1;
-        document.getElementById('nav-menu-side').classList.remove('hidden');
-        document.getElementById('nav-menu-side').classList.add('nav-transition');
-      } else {
-        x = x - 1;
-        document.getElementById('nav-menu-side').classList.remove('nav-transition');
-        document.getElementById('nav-menu-side').classList.add('hidden');
-      }
-    }
-
-    function handleMouseEnter() {
-      document.getElementById('event-overlay').classList.remove('hidden');
-      document.getElementById('event-overlay').classList.add('event-transition');
-    }
-
-    function removemouseleave() {
-      document.getElementById('event-overlay').classList.add('hidden');
-    }
-
-    function handleMouseEnter1() {
-      document.getElementById('event-overlay2').classList.remove('hidden');
-      console.log("handle1");
-    }
-
-    function removemouseleave1() {
-      document.getElementById('event-overlay2').classList.add('hidden');
-      console.log("mouse out");
-    }
-
-    function handleMouseEnter2() {
-      document.getElementById('event-overlay3').classList.remove('hidden');
-      console.log("handle1");
-    }
-
-    function removemouseleave2() {
-      document.getElementById('event-overlay3').classList.add('hidden');
-      console.log("mouse out");
-    }
-
-    function openRegistration() {
-      window.open('/registration/index.html', '_self');
-    }
-
-    console.log("sjcnsk");
-  // Empty dependency array to run the effect only once
+  }, []); 
 
   return (
     <html lang="en">
-
     <head>
-      <meta charset="UTF-8" />
+      <meta charSet="UTF-8" /> 
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>E-Sports | Aagaz</title>
       <link rel="stylesheet" href="style.css" />
       <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" /> 
       <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet" />
     </head>
-
     <body>
       <header>
-       
+       {/* Header content */}
       </header>
       <main>
         <div style={{display:'flex',alignItems:"center",justifyContent:"center"}} className="main-cont">
           <div id="espmain">
-
-<a href='' style={{outline:"none",color:"white",textDecoration:"none"}}>
-  <h2 style={{color:"white",outline:"none !important",textDecoration:"none"}}>
-    Register Now
-  </h2>
-</a>
-
+            <a href='#register' style={{outline:"none",color:"white",textDecoration:"none"}} aria-label="Register for esports event">
+              <h2 style={{color:"white",outline:"none !important",textDecoration:"none"}}>
+                Register Now
+              </h2>
+            </a>
           </div>
-          <Image className="bgmi-char"  alt="muthi" src={muthi} />
+          <Image className="bgmi-char" alt="BGMI character" src={muthi} />
           <h1 className="why-esport">
-
+            Esports Competition
           </h1>
         </div>
-
         <div className="cont2">
-          <h1 className="fancy-text"></h1>
+          <h1 className="fancy-text">Valorant</h1> 
           <div className="pbg">
             <p className="about-udghosh">
               <span className="udgosh">AAGAZ</span> is the annual flagship sports festival organized by HBTU
@@ -124,7 +64,7 @@ const Esports = () => {
           </div>
         </div>
 {/* 
-        <div className="upcoming-events">
+              <div className="upcoming-events">
           <h1 className="upcoming">EVENTS</h1>
           <div className="events-name">
             <div className="event event1" onMouseEnter={handleMouseEnter} onMouseLeave={removemouseleave}>
@@ -165,10 +105,8 @@ const Esports = () => {
           <div className="hover-effect5"></div>
         </div> */}
       </main>
-  
-      <script src="https://kit.fontawesome.com/73c26b4bc1.js" crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/73c26b4bc1.js" crossOrigin="anonymous"></script>
     </body>
-
     </html>
   );
 };
