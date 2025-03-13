@@ -469,7 +469,7 @@ const Home = () => {
                 <motion.p variants={fadeIn} className="about-paragraph">
                   <span className="highlight-text">AAGAZ'25</span>, HBTU Kanpur's annual sports fest, promises an even grander celebration of
                   sportsmanship, competition, and innovation. Led by{" "}
-                  <strong>Secretary Akhilesh Yadav and Awantika</strong>, 4th-year B.Tech students, the event builds upon the phenomenal success of
+                  <strong>Secretary Akhilesh Yadav and Awantika</strong>, 3rd-year B.Tech students, the event builds upon the phenomenal success of
                   AAGAZ'24.
                 </motion.p>
                 
@@ -482,8 +482,8 @@ const Home = () => {
                 
                 <motion.p variants={fadeIn} className="about-paragraph">
                   Under the leadership of <strong>Akhilesh and Awantika</strong>, the organizing team ensures
-                  a seamless experience for athletes and participants. <strong>Mohammad Tauqeer and Sahil
-                  Sakoor</strong>, the technical heads and creators of the event's website, continue to add an
+                  a seamless experience for athletes and participants. <strong>Mohammad Tauqeer, Prateek Srivastava and
+                  Priyanshu Yadav </strong>, the technical heads and creators of the event's website, continue to add an
                   innovative digital touch, enhancing the online experience.
                 </motion.p>
                 
@@ -596,13 +596,13 @@ const Home = () => {
               {[
                 { 
                   value: statsAnimated.current ? `${animatedStats.events}+` : "25+", 
-                  finalValue: "25+",
+                  finalValue: "30+",
                   label: "Sports Events", 
                   icon: "🏆" 
                 },
                 { 
                   value: statsAnimated.current ? `${animatedStats.colleges}+` : "100+", 
-                  finalValue: "100+",
+                  finalValue: "20+",
                   label: "Participating Colleges", 
                   icon: "🏫" 
                 },
