@@ -34,7 +34,7 @@ const Home = () => {
   const [eventsRef, eventsInView] = useInView({ threshold: 0.2, triggerOnce: true });
 
   // Event date - wrapped in useMemo to prevent recreation on every render
-  const eventDate = useMemo(() => new Date('2025-04-15T00:00:00'), []);
+  const eventDate = useMemo(() => new Date('2025-04-10T00:00:00'), []);
 
   // State for animated stat values
   const [animatedStats, setAnimatedStats] = useState({
