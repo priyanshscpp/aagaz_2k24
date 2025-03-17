@@ -51,18 +51,18 @@ const Team = () => {
   const leadershipTeam = [
     {
       id: 1,
-      name: "Pathan Faiz",
+      name: "Akhilesh Yadav",
       role: "Students Secretary",
       image: faiz,
       description: "Leading the AAGAZ'25 organizing committee with vision and dedication.",
-      instagram: "https://www.instagram.com/alfai.zu07/",
-      linkedin: "https://www.linkedin.com/in/faiz-khan-a08644229/",
-      email: "aagaz24official@gmail.com",
-      phone: "+916393743138"
+      instagram: "https://www.instagram.com/akhil_023ii/",
+      linkedin: "https://www.linkedin.com/in/akhilesh-yadav-59541425a/",
+      email: "subcoucilsports@gmail.com",
+      phone: "+916392782210"
     },
     {
       id: 2,
-      name: "Namrata",
+      name: "Awantika",
       role: "Students Secretary",
       image: namrata,
       description: "Coordinating all aspects of AAGAZ'25 with exceptional organizational skills.",
@@ -76,16 +76,16 @@ const Team = () => {
   const teamMembers = [
     {
       id: 3,
-      name: "Sahil",
+      name: "Mohammad Tauqeer",
       role: "Technical Head",
       image: sahil,
       description: "Managing all technical aspects of AAGAZ'25 with expertise and innovation.",
-      instagram: "#",
-      linkedin: "#",
-      email: "example@hbtu.ac.in",
-      phone: "+91XXXXXXXXXX"
+      instagram: "https://www.instagram.com/tauqeer_7770/",
+      linkedin: "https://www.linkedin.com/in/mohammad-tauqeer-a-642702258/",
+      email: "220110035@hbtu.ac.in",
+      phone: "+918009593561"
     },
-    {
+    { /*
       id: 4,
       name: "Haza",
       role: "Finance Head",
@@ -95,10 +95,11 @@ const Team = () => {
       linkedin: "#",
       email: "example@hbtu.ac.in",
       phone: "+91XXXXXXXXXX"
+      */
     },
     {
       id: 5,
-      name: "Sonu",
+      name: "Dev Chitousia",
       role: "Event Coordinator",
       image: sonu,
       description: "Coordinating all events and ensuring smooth execution during AAGAZ'25.",
@@ -108,6 +109,7 @@ const Team = () => {
       phone: "+91XXXXXXXXXX"
     },
     {
+      /*
       id: 6,
       name: "Ehram",
       role: "Marketing Head",
@@ -118,9 +120,10 @@ const Team = () => {
       email: "example@hbtu.ac.in",
       phone: "+91XXXXXXXXXX"
     },
+    */
     {
       id: 7,
-      name: "Aryan",
+      name: "Abhishek Mishra",
       role: "Event Manager",
       image: aryan,
       description: "Managing event logistics and coordination for AAGAZ'25.",
@@ -129,7 +132,7 @@ const Team = () => {
       email: "example@hbtu.ac.in",
       phone: "+91XXXXXXXXXX"
     },
-    {
+    { /*
       id: 8,
       name: "Ruchi",
       role: "Publicity Head",
@@ -140,10 +143,11 @@ const Team = () => {
       email: "example@hbtu.ac.in",
       phone: "+91XXXXXXXXXX"
     },
+    */
     {
       id: 9,
       name: "Vikas",
-      role: "Event Coordinator",
+      role: "Design Head",
       image: vikas,
       description: "Coordinating sports events and competitions during AAGAZ'25.",
       instagram: "#",
@@ -162,6 +166,7 @@ const Team = () => {
       email: "example@hbtu.ac.in",
       phone: "+91XXXXXXXXXX"
     },
+    /*
     {
       id: 11,
       name: "Subodh",
@@ -173,6 +178,7 @@ const Team = () => {
       email: "example@hbtu.ac.in",
       phone: "+91XXXXXXXXXX"
     }
+  */
   ];
 
   // Background particles component
