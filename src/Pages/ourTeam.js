@@ -11,7 +11,7 @@ import sahil from "./images/Tauqeer.jpg";
 import sonu from "./images/Dev.png";
 import aryan from "./images/Abhishek.jpg";
 import vikas from "./images/Vikas.jpg";
-
+import ashutosh from "./images/pr ashutosh.jpg";
 const Team = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -98,18 +98,17 @@ const Team = () => {
       email: "example@hbtu.ac.in",
       phone: "+91XXXXXXXXXX"
     },
-    
-// {
-//   id: 10,
-//   name: "Ashutosh",
-//   role: "PR Head",
-//   image: ashutosh,
-//   description: "Managing public relations and external communications for AAGAZ'25.",
-//   instagram: "#",
-//   linkedin: "#",
-//   email: "example@hbtu.ac.in",
-//   phone: "+91XXXXXXXXXX"
-// }
+    {
+      id: 10,
+      name: "Ashutosh",
+      role: "PR Head",
+      image: ashutosh,
+      description: "Managing public relations and external communications for AAGAZ'25.",
+      instagram: "#",
+      linkedin: "#",
+      email: "example@hbtu.ac.in",
+      phone: "+91XXXXXXXXXX"
+    }
   ];
 
   const TeamCard = ({ member }) => {
