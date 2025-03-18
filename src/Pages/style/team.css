@@ -8,6 +8,13 @@
   --team-highlight: #ffcb05;
   --team-border: rgba(255, 255, 255, 0.08);
 }
+.team-card.vikas {
+  transform: translateY(-15px);
+}
+
+.team-card.awantika {
+  transform: translateY(-15px);
+}
 
 .team-container {
   min-height: 100vh;
