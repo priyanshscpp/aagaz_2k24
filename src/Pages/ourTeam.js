@@ -79,7 +79,7 @@ const Team = () => {
     {
       id: 7,
       name: "Abhishek Mishra",
-      role: "Event Manager",
+      role: "Event Coordinator",
       image: aryan,
       description: "Managing event logistics and coordination for AAGAZ'25.",
       instagram: "#",
