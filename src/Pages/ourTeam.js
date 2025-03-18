@@ -100,10 +100,10 @@ const Team = () => {
     },
     {
       id: 10,
-      name: "Ashutosh",
-      role: "PR Head",
+      name: "Prateek Srivastava",
+      role: "Web Dev Lead",
       image: ashutosh,
-      description: "Managing public relations and external communications for AAGAZ'25.",
+      description: "Designed Aagaz 25' Website, giving it a unique UI.",
       instagram: "#",
       linkedin: "#",
       email: "example@hbtu.ac.in",
