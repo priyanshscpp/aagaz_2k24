@@ -8,7 +8,7 @@ import "./style/team.css";
 import faiz from "./images/faiz.png";
 import namrata from "./images/Awantika.jpg";
 import sahil from "./images/Tauqeer.jpg";
-import sonu from "./images/event sonu.png";
+import sonu from "./images/Dev.jpg";
 import aryan from "./images/event aryan.jpg";
 import vikas from "./images/vikas event.jpg";
 import ashutosh from "./images/pr ashutosh.jpg";
