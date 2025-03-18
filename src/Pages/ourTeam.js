@@ -6,7 +6,7 @@ import { FaInstagram, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa';
 import "./style/team.css";
 
 import faiz from "./images/Akhilesh";
-import namrata from "./images/Awantika.jpg";
+import namrata from "./images/Awantika2.jpg";
 import sahil from "./images/Tauqeer.jpg";
 import sonu from "./images/Dev.jpg";
 import aryan from "./images/Abhishek.jpg";
