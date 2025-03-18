@@ -11,7 +11,6 @@ import sahil from "./images/Tauqeer.jpg";
 import sonu from "./images/Dev.png";
 import aryan from "./images/Abhishek.jpg";
 import vikas from "./images/Vikas.jpg";
-import ashutosh from "./images/pr ashutosh.jpg";
 
 const Team = () => {
   const containerVariants = {
