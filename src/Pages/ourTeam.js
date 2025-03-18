@@ -5,12 +5,12 @@ import { Container } from 'react-bootstrap';
 import { FaInstagram, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa';
 import "./style/team.css";
 
-import faiz from "./images/faiz.png";
+import faiz from "./images/Akhilesh";
 import namrata from "./images/Awantika.jpg";
 import sahil from "./images/Tauqeer.jpg";
 import sonu from "./images/Dev.jpg";
 import aryan from "./images/Abhishek.jpg";
-import vikas from "./images/vikas event.jpg";
+import vikas from "./images/Vikas .jpg";
 import ashutosh from "./images/pr ashutosh.jpg";
 const Team = () => {
   const containerVariants = {
