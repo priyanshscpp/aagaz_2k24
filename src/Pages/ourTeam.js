@@ -8,9 +8,9 @@ import "./style/team.css";
 import faiz from "./images/faiz.png";
 import namrata from "./images/Awantika.jpg";
 import sahil from "./images/Tauqeer.jpg";
-import sonu from "./images/event sonu.png";
-import aryan from "./images/event aryan.jpg";
-import vikas from "./images/vikas event.jpg";
+import sonu from "./images/Dev.png";
+import aryan from "./images/Abhishek.jpg";
+import vikas from "./images/Vikas.jpg";
 import ashutosh from "./images/pr ashutosh.jpg";
 
 const Team = () => {
@@ -99,17 +99,18 @@ const Team = () => {
       email: "example@hbtu.ac.in",
       phone: "+91XXXXXXXXXX"
     },
-    {
-      id: 10,
-      name: "Ashutosh",
-      role: "PR Head",
-      image: ashutosh,
-      description: "Managing public relations and external communications for AAGAZ'25.",
-      instagram: "#",
-      linkedin: "#",
-      email: "example@hbtu.ac.in",
-      phone: "+91XXXXXXXXXX"
-    }
+    
+// {
+//   id: 10,
+//   name: "Ashutosh",
+//   role: "PR Head",
+//   image: ashutosh,
+//   description: "Managing public relations and external communications for AAGAZ'25.",
+//   instagram: "#",
+//   linkedin: "#",
+//   email: "example@hbtu.ac.in",
+//   phone: "+91XXXXXXXXXX"
+// }
   ];
 
   const TeamCard = ({ member }) => {
