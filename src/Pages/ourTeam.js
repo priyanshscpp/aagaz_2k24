@@ -9,8 +9,8 @@ import faiz from "./images/faiz.png";
 import namrata from "./images/Awantika.jpg";
 import sahil from "./images/Tauqeer.jpg";
 import sonu from "./images/event sonu.png";
-import aryan from "./images/Abhishek.jpg";
-import vikas from "./images/Vikas.jpg";
+import aryan from "./images/event aryan.jpg";
+import vikas from "./images/vikas event.jpg";
 import ashutosh from "./images/pr ashutosh.jpg";
 const Team = () => {
   const containerVariants = {
