@@ -6,8 +6,8 @@ import { FaInstagram, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa';
 import "./style/team.css";
 
 import faiz from "./images/faiz.png";
-import namrata from "./images/namrata.jpg";
-import sahil from "./images/sahil technical.jpg";
+import namrata from "./images/Awantika.jpg";
+import sahil from "./images/Tauqeer.jpg";
 import sonu from "./images/event sonu.png";
 import aryan from "./images/event aryan.jpg";
 import vikas from "./images/vikas event.jpg";
