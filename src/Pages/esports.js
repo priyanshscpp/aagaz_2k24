@@ -1,3 +1,4 @@
+// index.jsx
 import React, { useEffect, useState } from 'react';
 import './style/esports.css'; 
 import muthi from "../res/bgmichar.png";
@@ -10,11 +11,15 @@ import { useInView } from 'react-intersection-observer';
 import { FaCalendarAlt, FaTrophy } from 'react-icons/fa';
 
 const Esports = () => {
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+      transition: { 
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
     }
   };
   
@@ -27,7 +32,13 @@ const Esports = () => {
     }
   };
 
-  const [eventsRef, eventsInView] = useInView({ threshold: 0.1, triggerOnce: true });
+  // Intersection observers for scroll animations
+  const [eventsRef, eventsInView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
+
+  // State for image loading status
   const [imagesLoaded, setImagesLoaded] = useState({
     bgmi: false,
     valorant: false,
@@ -38,6 +49,7 @@ const Esports = () => {
   });
 
   useEffect(() => {
+    // Mobile menu handling
     const handleResize = () => {
       const windowWidth = window.innerWidth;
       const navMenuButton = document.getElementById('navmenuButton');
@@ -52,25 +64,75 @@ const Esports = () => {
       }
     };
 
+    // Check if background images exist
+    const checkBackgroundImages = async () => {
+      try {
+        const bgResponse = await fetch('../../res/bgmibg.jpg');
+        const gamingBgResponse = await fetch('../../res/gamingbg.jpg');
+        
+        setImagesLoaded(prev => ({
+          ...prev,
+          bg: bgResponse.ok,
+          gamingBg: gamingBgResponse.ok
+        }));
+      } catch (error) {
+        console.warn('Background images not found:', error);
+      }
+    };
+
     window.addEventListener('resize', handleResize);
+    checkBackgroundImages();
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Game data
   const games = [
-    { id: 1, title: "Valorant", description: "Compete in the region's biggest Valorant tournament.", image: valorantImg, date: "April 10, 2025", prize: "Coming Soon" },
-    { id: 2, title: "BGMI", description: "Battle it out in BGMI for incredible prizes and glory.", image: bgmiImg, date: "April 10, 2025", prize: "Coming Soon" },
-    { id: 3, title: "Call of Duty", description: "Join the Call of Duty tournament and showcase your skills.", image: codImg, date: "April 10, 2025", prize: "Coming Soon" }
+    {
+      id: 1,
+      title: "Valorant",
+      description: "Compete in the region's biggest Valorant tournament with teams from all over India. Show your tactical prowess and aim skills!",
+      image: valorantImg,
+      date: "April 10, 2025",
+      prize: "Coming Soon"
+    },
+    {
+      id: 2,
+      title: "BGMI",
+      description: "Battle it out in BGMI for incredible prizes and glory in this esports extravaganza. Will your squad be the last one standing?",
+      image: bgmiImg,
+      date: "April 10, 2025",
+      prize: "Coming Soon"
+    },
+    {
+      id: 3,
+      title: "Call of Duty",
+      description: "Join the Call of Duty tournament and showcase your skills in this fast-paced FPS competition with teams from across the country.",
+      image: codImg,
+      date: "April 10, 2025",
+      prize: "Coming Soon"
+    }
   ];
 
   const openRegistration = () => {
-    alert("Registration will open soon! Stay tuned for updates.");
+    window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSdrm5x6F5IAISOdWeaf5wQjYxATEfWwCnMre9kKgmagAGd8gw/viewform";
+  };
+
+  // Handle image load errors
+  const handleImageError = (imageKey) => {
+    setImagesLoaded(prev => ({ ...prev, [imageKey]: false }));
+  };
+
+  const handleImageLoad = (imageKey) => {
+    setImagesLoaded(prev => ({ ...prev, [imageKey]: true }));
   };
 
   return (
     <div className="esports-container">
+      {/* Animated background elements */}
       <div className="esports-bg"></div>
       <div className="esports-grid"></div>
       
+      {/* Hero section */}
       <section className={`main-cont ${imagesLoaded.bg ? 'with-bg' : ''}`}>
         <div className="hero-content">
           <motion.h1 
@@ -97,44 +159,6 @@ const Esports = () => {
           </motion.div>
         </div>
       </section>
-
-      <motion.section 
-        className={`upcoming-events ${imagesLoaded.gamingBg ? 'with-bg' : ''}`}
-        ref={eventsRef}
-        variants={containerVariants}
-        initial="hidden"
-        animate={eventsInView ? "visible" : "hidden"}
-      >
-        <h1 className="upcoming">Featured Games</h1>
-        <div className="events-name">
-          {games.map((game) => (
-            <motion.div 
-              key={game.id}
-              className="event"
-              variants={itemVariants}
-              whileHover={{ y: -10 }}
-            >
-              <div className="event1">
-                <Image className="game-image" src={game.image} alt={game.title} loading="lazy" />
-                <motion.div className="event-overlay" initial={{ opacity: 0 }} whileHover={{ opacity: 1 }}>
-                  <h3>{game.title}</h3>
-                  <p>{game.description}</p>
-                  <span><FaCalendarAlt /> {game.date}</span>
-                  <span><FaTrophy /> Prize: {game.prize}</span>
-                  <motion.button 
-                    className="register"
-                    onClick={openRegistration}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Register Now
-                  </motion.button>
-                </motion.div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
     </div>
   );
 };
