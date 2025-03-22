@@ -1,15 +1,17 @@
+// index.jsx
 import React, { useEffect, useState } from 'react';
 import './style/esports.css'; 
 import muthi from "../res/bgmichar.png";
 import valorantImg from "../res/valorant.jpg";
 import bgmiImg from "../res/bgmi.jpg";
 import codImg from "../res/cod.jpg";
-import { Image, Container, Card, Button } from 'react-bootstrap';
+import { Image, Container } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaCalendarAlt, FaTrophy } from 'react-icons/fa';
 
 const Esports = () => {
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -30,11 +32,13 @@ const Esports = () => {
     }
   };
 
+  // Intersection observers for scroll animations
   const [eventsRef, eventsInView] = useInView({
     threshold: 0.1,
     triggerOnce: true
   });
 
+  // Game data
   const games = [
     {
       id: 1,
@@ -64,33 +68,6 @@ const Esports = () => {
 
   return (
     <div className="esports-container">
-      <section className="main-cont">
-        <div className="hero-content">
-          <motion.h1 
-            className="why-esport"
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            Esports Championship
-          </motion.h1>
-          <motion.div 
-            id="espmain"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <motion.button
-              onClick={() => window.open("https://forms.gle/WpdnB9kTyVo9wohE9", "_blank")}
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <h2>Register Now</h2>
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
-
       <motion.section 
         className="upcoming-events"
         ref={eventsRef}
@@ -99,7 +76,7 @@ const Esports = () => {
         animate={eventsInView ? "visible" : "hidden"}
       >
         <h1 className="upcoming">Featured Games</h1>
-        <Container className="events-name">
+        <div className="events-name">
           {games.map((game) => (
             <motion.div 
               key={game.id}
@@ -107,26 +84,40 @@ const Esports = () => {
               variants={itemVariants}
               whileHover={{ y: -10 }}
             >
-              <Card className="game-card">
-                <Card.Img variant="top" src={game.image} alt={game.title} loading="lazy" />
-                <Card.Body>
-                  <Card.Title>{game.title}</Card.Title>
-                  <Card.Text>{game.description}</Card.Text>
-                  <p>
-                    <FaCalendarAlt /> {game.date} <br />
-                    <FaTrophy /> Prize: {game.prize}
+              <div className="event1">
+                <Image 
+                  className="game-image" 
+                  src={game.image} 
+                  alt={game.title}
+                  loading="lazy"
+                />
+                <motion.div
+                  className="event-overlay"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                >
+                  <h3>{game.title}</h3>
+                  <p className="text-bgmi">
+                    {game.description}
+                    <br />
+                    <span><FaCalendarAlt /> {game.date}</span>
+                    <span><FaTrophy /> Prize: {game.prize}</span>
                   </p>
-                  <Button 
-                    variant="primary" 
-                    onClick={() => window.open("https://forms.gle/WpdnB9kTyVo9wohE9", "_blank")}
+                  <motion.a 
+                    className="register"
+                    href="https://example.com/register" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     Register Now
-                  </Button>
-                </Card.Body>
-              </Card>
+                  </motion.a>
+                </motion.div>
+              </div>
             </motion.div>
           ))}
-        </Container>
+        </div>
       </motion.section>
     </div>
   );
