@@ -46,10 +46,10 @@ const Team = () => {
       role: "Students Secretary",
       image: namrata,
       description: "Coordinating all aspects of AAGAZ'25 with exceptional organizational skills.",
-      instagram: "https://www.instagram.com/tishaaachaudhary",
-      linkedin: "https://www.linkedin.com/in/namrata-singh-75a88322b/",
-      email: "210113028@hbtu.ac.in",
-      phone: "+919548499530"
+      instagram: "https://www.instagram.com/avni_17_05",
+      linkedin: "https://www.linkedin.com/in/awantika-chaudhary-3ba9a92b1/",
+      email: "awantika17032004@gmail.com",
+      phone: "+917453097931"
     }
   ];
 
@@ -71,17 +71,17 @@ const Team = () => {
       role: "Event Coordinator",
       image: sonu,
       description: "Coordinating all events and ensuring smooth execution during AAGAZ'25.",
-      instagram: "#",
-      linkedin: "#",
-      email: "example@hbtu.ac.in",
-      phone: "+91XXXXXXXXXX"
+      instagram: "https://www.instagram.com/dev_chitousia",
+      linkedin: "https://www.linkedin.com/in/dev-chitousia-5674a628a",
+      email: "devchitousia@gmail.com",
+      phone: "+919720155510"
     },
     {
       id: 7,
       name: "Abhishek Mishra",
       role: "Event Coordinator",
       image: aryan,
-      description: "Managing event logistics and coordination for AAGAZ'25.",
+      description: "Coordinating all events and ensuring smooth execution during AAGAZ'25.",
       instagram: "#",
       linkedin: "#",
       email: "example@hbtu.ac.in",
