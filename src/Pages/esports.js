@@ -1,17 +1,15 @@
-// index.jsx
 import React, { useEffect, useState } from 'react';
 import './style/esports.css'; 
 import muthi from "../res/bgmichar.png";
 import valorantImg from "../res/valorant.jpg";
 import bgmiImg from "../res/bgmi.jpg";
 import codImg from "../res/cod.jpg";
-import { Image, Container } from 'react-bootstrap';
+import { Image, Container, Card, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaCalendarAlt, FaTrophy } from 'react-icons/fa';
 
 const Esports = () => {
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -32,60 +30,11 @@ const Esports = () => {
     }
   };
 
-  // Intersection observers for scroll animations
   const [eventsRef, eventsInView] = useInView({
     threshold: 0.1,
     triggerOnce: true
   });
 
-  // State for image loading status
-  const [imagesLoaded, setImagesLoaded] = useState({
-    bgmi: false,
-    valorant: false,
-    cod: false,
-    char: false,
-    bg: false,
-    gamingBg: false
-  });
-
-  useEffect(() => {
-    // Mobile menu handling
-    const handleResize = () => {
-      const windowWidth = window.innerWidth;
-      const navMenuButton = document.getElementById('navmenuButton');
-      const navMenu = document.getElementById('nav-menu');
-      
-      if (windowWidth <= 956) {
-        navMenuButton?.classList?.remove('hidden');
-        navMenu?.classList?.add('hidden');
-      } else {
-        navMenuButton?.classList?.add('hidden');
-        navMenu?.classList?.remove('hidden');
-      }
-    };
-
-    // Check if background images exist
-    const checkBackgroundImages = async () => {
-      try {
-        const bgResponse = await fetch('../../res/bgmibg.jpg');
-        const gamingBgResponse = await fetch('../../res/gamingbg.jpg');
-        
-        setImagesLoaded(prev => ({
-          ...prev,
-          bg: bgResponse.ok,
-          gamingBg: gamingBgResponse.ok
-        }));
-      } catch (error) {
-        console.warn('Background images not found:', error);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    checkBackgroundImages();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Game data
   const games = [
     {
       id: 1,
@@ -113,27 +62,9 @@ const Esports = () => {
     }
   ];
 
-  const openRegistration = () => {
-    window.location.href = "https://forms.gle/WpdnB9kTyVo9wohE9";
-  };
-
-  // Handle image load errors
-  const handleImageError = (imageKey) => {
-    setImagesLoaded(prev => ({ ...prev, [imageKey]: false }));
-  };
-
-  const handleImageLoad = (imageKey) => {
-    setImagesLoaded(prev => ({ ...prev, [imageKey]: true }));
-  };
-
   return (
     <div className="esports-container">
-      {/* Animated background elements */}
-      <div className="esports-bg"></div>
-      <div className="esports-grid"></div>
-      
-      {/* Hero section */}
-      <section className={`main-cont ${imagesLoaded.bg ? 'with-bg' : ''}`}>
+      <section className="main-cont">
         <div className="hero-content">
           <motion.h1 
             className="why-esport"
@@ -150,7 +81,7 @@ const Esports = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <motion.button
-              onClick={openRegistration}
+              onClick={() => window.open("https://forms.gle/WpdnB9kTyVo9wohE9", "_blank")}
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -158,24 +89,45 @@ const Esports = () => {
             </motion.button>
           </motion.div>
         </div>
-        {muthi && (
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
-          >
-            <Image 
-              className="bgmi-char" 
-              src={muthi} 
-              alt="BGMI character"
-              loading="lazy"
-              onError={() => handleImageError('char')}
-              onLoad={() => handleImageLoad('char')}
-              style={{ display: imagesLoaded.char ? 'block' : 'none' }}
-            />
-          </motion.div>
-        )}
       </section>
+
+      <motion.section 
+        className="upcoming-events"
+        ref={eventsRef}
+        variants={containerVariants}
+        initial="hidden"
+        animate={eventsInView ? "visible" : "hidden"}
+      >
+        <h1 className="upcoming">Featured Games</h1>
+        <Container className="events-name">
+          {games.map((game) => (
+            <motion.div 
+              key={game.id}
+              className="event"
+              variants={itemVariants}
+              whileHover={{ y: -10 }}
+            >
+              <Card className="game-card">
+                <Card.Img variant="top" src={game.image} alt={game.title} loading="lazy" />
+                <Card.Body>
+                  <Card.Title>{game.title}</Card.Title>
+                  <Card.Text>{game.description}</Card.Text>
+                  <p>
+                    <FaCalendarAlt /> {game.date} <br />
+                    <FaTrophy /> Prize: {game.prize}
+                  </p>
+                  <Button 
+                    variant="primary" 
+                    onClick={() => window.open("https://forms.gle/WpdnB9kTyVo9wohE9", "_blank")}
+                  >
+                    Register Now
+                  </Button>
+                </Card.Body>
+              </Card>
+            </motion.div>
+          ))}
+        </Container>
+      </motion.section>
     </div>
   );
 };
