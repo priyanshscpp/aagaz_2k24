@@ -114,7 +114,7 @@ const Esports = () => {
   ];
 
   const openRegistration = () => {
-    alert("Registration will open soon! Stay tuned for updates.");
+    window.location.href = "https://forms.gle/WpdnB9kTyVo9wohE9";
   };
 
   // Handle image load errors
@@ -175,85 +175,7 @@ const Esports = () => {
             />
           </motion.div>
         )}
-        
-        {/* Glow effects */}
-        <div className="glow-effect" style={{ top: '20%', left: '10%' }} />
-        <div className="glow-effect" style={{ top: '60%', right: '15%' }} />
-        <div className="glow-effect" style={{ bottom: '10%', left: '20%' }} />
       </section>
-
-      {/* Events section */}
-      <motion.section 
-        className={`upcoming-events ${imagesLoaded.gamingBg ? 'with-bg' : ''}`}
-        ref={eventsRef}
-        variants={containerVariants}
-        initial="hidden"
-        animate={eventsInView ? "visible" : "hidden"}
-      >
-        <h1 className="upcoming">Featured Games</h1>
-        <div className="events-name">
-          {games.map((game) => (
-            <motion.div 
-              key={game.id}
-              className="event"
-              variants={itemVariants}
-              whileHover={{ y: -10 }}
-            >
-              <div className="event1">
-                <Image 
-                  className="game-image" 
-                  src={game.image} 
-                  alt={game.title}
-                  loading="lazy"
-                  onError={() => handleImageError(game.title.toLowerCase())}
-                  onLoad={() => handleImageLoad(game.title.toLowerCase())}
-                />
-                <motion.div
-                  className="event-overlay"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                >
-                  <h3 style={{ 
-                    color: 'var(--esports-primary)',
-                    fontFamily: 'Orbitron, sans-serif',
-                    marginBottom: '1rem'
-                  }}>
-                    {game.title}
-                  </h3>
-                  <p className="text-bgmi">
-                    {game.description}
-                    <br />
-                    <span style={{ 
-                      display: 'block', 
-                      marginTop: '10px', 
-                      color: 'var(--esports-accent)',
-                      fontWeight: 'bold' 
-                    }}>
-                      <FaCalendarAlt style={{ marginRight: '5px' }} /> {game.date}
-                    </span>
-                    <span style={{ 
-                      display: 'block', 
-                      marginTop: '5px',
-                      color: 'var(--esports-secondary)',
-                      fontWeight: 'bold' 
-                    }}>
-                      <FaTrophy style={{ marginRight: '5px' }} /> Prize: {game.prize}
-                    </span>
-                  </p>
-                  <motion.button 
-                    className="register"
-                    onClick={openRegistration}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Register Now
-                  </motion.button>
-                </motion.div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
     </div>
   );
 };
