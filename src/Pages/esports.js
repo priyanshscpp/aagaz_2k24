@@ -105,7 +105,7 @@ const Esports = () => {
                   </p>
                   <motion.a 
                     className="register"
-                    href="https://example.com/register" 
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSdrm5x6F5IAISOdWeaf5wQjYxATEfWwCnMre9kKgmagAGd8gw/viewform" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05, y: -5 }}
