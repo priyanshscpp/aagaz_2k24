@@ -92,24 +92,24 @@ const Esports = () => {
       title: "Valorant",
       description: "Compete in the region's biggest Valorant tournament with teams from all over India. Show your tactical prowess and aim skills!",
       image: valorantImg,
-      date: "April 16-17, 2025",
-      prize: "₹50,000"
+      date: "April 10, 2025",
+      prize: "Coming Soon"
     },
     {
       id: 2,
       title: "BGMI",
       description: "Battle it out in BGMI for incredible prizes and glory in this esports extravaganza. Will your squad be the last one standing?",
       image: bgmiImg,
-      date: "April 18-19, 2025",
-      prize: "₹30,000"
+      date: "April 10, 2025",
+      prize: "Coming Soon"
     },
     {
       id: 3,
       title: "Call of Duty",
       description: "Join the Call of Duty tournament and showcase your skills in this fast-paced FPS competition with teams from across the country.",
       image: codImg,
-      date: "April 20, 2025",
-      prize: "₹20,000"
+      date: "April 10, 2025",
+      prize: "Coming Soon"
     }
   ];
 
