@@ -39,7 +39,8 @@ const NavBar = () => {
         padding: "15px",
         backdropFilter: "blur(5px)",
         border: "1px solid rgba(255, 255, 255, 0.03)",
-        transition: "top 0.3s ease-in-out"
+        transition: "top 0.3s ease-in-out",
+        zIndex: 9999
       }}
       variant="dark"
       expand="lg"
@@ -68,7 +69,7 @@ const NavBar = () => {
           aria-controls="responsive-navbar-nav"
           onClick={() => setIsNavbarOpen(!isNavbarOpen)}
         />
-        <Navbar.Collapse id="responsive-navbar-nav" className={isNavbarOpen ? 'show' : ''}>
+        <Navbar.Collapse id="responsive-navbar-nav" className={isNavbarOpen ? 'show' : ''} style={{ zIndex: 9999 }}>
           <Nav className="navLinks ms-auto">
             <Link className="navLinks1" to="/" onClick={handleNavLinkClick}>
               Home

@@ -1,202 +1,189 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { FaEnvelope, FaHandshake } from 'react-icons/fa';
+import { FaEnvelope, FaHandshake, FaChessKnight, FaRunning, FaBolt } from 'react-icons/fa';
 import './style/sponsors.css';
 
-// Import placeholder logos (you can replace these with actual sponsor logos later)
+// Import assets
 import aagaz_logo from "../res/onlyaagaz.png";
+import sponsor1 from "./images/sponsor1.jpg"; // Paramount Chess
+import sponsor2 from "./images/sponsor2.png"; // Red Bull
+import sponsor3 from "./images/sponsor3.png"; // Decathlon
 
 const Sponsors = () => {
+  // Animation controls
+  const controls = useAnimation();
+
+  // Intersection observer for scroll animations
+  const [ref, inView] = useInView({
+    threshold: 0.2,
+    triggerOnce: false
+  });
+
+  // Start animations when in view
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,
       transition: { 
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
         delayChildren: 0.3
       }
     }
   };
   
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: { 
       y: 0, 
       opacity: 1,
-      transition: { duration: 0.5 }
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 
-  // Intersection observer for scroll animations
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
+  const logoVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: { 
+      scale: 1, 
+      opacity: 1,
+      transition: { duration: 0.5 }
+    },
+    hover: {
+      scale: 1.05,
+      transition: { duration: 0.3 }
+    }
+  };
 
-  // Placeholder sponsor data (replace with actual sponsors when available)
-  const platinumSponsors = [
-    // { id: 1, name: "Company Name", type: "Technology Partner", logo: "logo-url" },
+  // All sponsors in a single array
+  const allSponsors = [
+    {
+      id: 1,
+      tier: "platinum",
+      name: "Paramount Chess",
+      type: "Official Chess Partner",
+      logo: sponsor1,
+      description: "Paramount Chess is a leading provider of high-quality chess equipment and training resources, dedicated to promoting the game of chess worldwide.",
+      icon: <FaChessKnight />
+    },
+    {
+      id: 2,
+      tier: "gold",
+      name: "Red Bull",
+      type: "Official Energy Drink Partner",
+      logo: sponsor2,
+      description: "Red Bull gives you wings! Providing energy drinks that fuel athletic performance and mental focus for competitors at AAGAZ'25.",
+      icon: <FaBolt />
+    },
+    {
+      id: 3,
+      tier: "silver",
+      name: "Decathlon",
+      type: "Official Sports Equipment Partner",
+      logo: sponsor3,
+      description: "Decathlon offers quality sporting goods at affordable prices, making sports accessible to everyone and supporting our vision for AAGAZ'25.",
+      icon: <FaRunning />
+    }
   ];
 
-  const goldSponsors = [
-    // { id: 1, name: "Company Name", type: "Food Partner", logo: "logo-url" },
-  ];
-
-  const silverSponsors = [
-    // { id: 1, name: "Company Name", type: "Media Partner", logo: "logo-url" },
-  ];
-
-  // Background particles component
-  const SponsorsParticleBackground = () => {
+  // Background elements component
+  const SponsorsBackground = () => {
     return (
-      <div className="sponsors-particles"></div>
+      <div className="sponsors-background">
+        <div className="sponsors-particles"></div>
+        <div className="sponsors-grid-overlay"></div>
+      </div>
     );
   };
 
   return (
     <div className="sponsors-container">
-      <SponsorsParticleBackground />
+      <SponsorsBackground />
       
       <Container>
         <motion.div
           className="sponsors-header"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.7 }}
         >
           <h1 className="sponsors-title">Our Sponsors</h1>
           <p className="sponsors-subtitle">
-            We are grateful to our sponsors who make AAGAZ'25 possible. Their support helps us create an unforgettable sporting experience.
+            We're proud to partner with these incredible brands who share our vision for AAGAZ'25 and help make this sporting extravaganza possible.
           </p>
         </motion.div>
 
-        {/* If there are platinum sponsors, show them */}
-        {platinumSponsors.length > 0 && (
+        <div className="sponsors-content-wrapper">
           <motion.div 
-            className="sponsors-tier"
+            className="sponsors-tier all-sponsors"
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate={controls}
             ref={ref}
           >
-            <div className="text-center mb-4">
-              <h2 className="tier-title">Platinum Sponsors</h2>
-            </div>
-            
-            <div className="sponsors-grid">
-              {platinumSponsors.map((sponsor) => (
+            <div className="sponsors-cards-container">
+              {allSponsors.map((sponsor) => (
                 <motion.div 
                   key={sponsor.id}
-                  className="sponsor-card"
+                  className={`sponsor-card ${sponsor.tier}-card`}
                   variants={itemVariants}
+                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
                 >
-                  <div className="sponsor-logo">
-                    <img src={sponsor.logo} alt={sponsor.name} />
+                  <div className={`sponsor-badge ${sponsor.tier}-badge`}>
+                    {sponsor.icon}
                   </div>
+                  <motion.div 
+                    className="sponsor-logo"
+                    variants={logoVariants}
+                    whileHover="hover"
+                  >
+                    <img src={sponsor.logo} alt={sponsor.name} />
+                  </motion.div>
                   <div className="sponsor-content">
                     <h3 className="sponsor-name">{sponsor.name}</h3>
-                    <p className="sponsor-type">{sponsor.type}</p>
+                    <p className={`sponsor-type ${sponsor.tier}-type`}>{sponsor.type}</p>
+                    <p className="sponsor-description">{sponsor.description}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-        )}
+        </div>
 
-        {/* If there are gold sponsors, show them */}
-        {goldSponsors.length > 0 && (
-          <motion.div 
-            className="sponsors-tier"
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-          >
-            <div className="text-center mb-4">
-              <h2 className="tier-title">Gold Sponsors</h2>
+        {/* Become a sponsor section */}
+        <motion.div 
+          className="become-sponsor-section"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
+          <div className="become-sponsor-content">
+            <div className="aagaz-logo">
+              <img src={aagaz_logo} alt="AAGAZ'25" />
             </div>
-            
-            <div className="sponsors-grid">
-              {goldSponsors.map((sponsor) => (
-                <motion.div 
-                  key={sponsor.id}
-                  className="sponsor-card"
-                  variants={itemVariants}
-                >
-                  <div className="sponsor-logo">
-                    <img src={sponsor.logo} alt={sponsor.name} />
-                  </div>
-                  <div className="sponsor-content">
-                    <h3 className="sponsor-name">{sponsor.name}</h3>
-                    <p className="sponsor-type">{sponsor.type}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-
-        {/* If there are silver sponsors, show them */}
-        {silverSponsors.length > 0 && (
-          <motion.div 
-            className="sponsors-tier"
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-          >
-            <div className="text-center mb-4">
-              <h2 className="tier-title">Silver Sponsors</h2>
-            </div>
-            
-            <div className="sponsors-grid">
-              {silverSponsors.map((sponsor) => (
-                <motion.div 
-                  key={sponsor.id}
-                  className="sponsor-card"
-                  variants={itemVariants}
-                >
-                  <div className="sponsor-logo">
-                    <img src={sponsor.logo} alt={sponsor.name} />
-                  </div>
-                  <div className="sponsor-content">
-                    <h3 className="sponsor-name">{sponsor.name}</h3>
-                    <p className="sponsor-type">{sponsor.type}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-
-        {/* If no sponsors yet, show coming soon section */}
-        {platinumSponsors.length === 0 && goldSponsors.length === 0 && silverSponsors.length === 0 && (
-          <motion.div 
-            className="sponsors-coming-soon"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="coming-soon-logo mb-4">
-              <img src={aagaz_logo} alt="AAGAZ'25" style={{ height: '120px' }} />
-            </div>
-            <h2 className="coming-soon-title">SPONSORS COMING SOON</h2>
-            <p className="coming-soon-text">
-              We're currently in talks with potential sponsors for AAGAZ'25. 
-              If you're interested in sponsoring our event, please reach out to us.
+            <h2 className="become-sponsor-title">Want to Join Our Sponsor Family?</h2>
+            <p className="become-sponsor-text">
+              Showcase your brand to thousands of energetic participants and spectators at AAGAZ'25. 
+              We offer various sponsorship packages designed to maximize your brand visibility and impact.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <a href="mailto:aagaz24official@gmail.com" className="sponsors-cta">
-                <FaHandshake style={{ marginRight: '10px' }} />
+                <FaHandshake className="cta-icon" />
                 Become a Sponsor
               </a>
             </motion.div>
-          </motion.div>
-        )}
+          </div>
+        </motion.div>
       </Container>
     </div>
   );

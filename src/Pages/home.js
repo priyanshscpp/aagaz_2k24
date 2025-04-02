@@ -9,8 +9,14 @@ import "./style/home.css";
 import aagaz_logo from "../res/Logo.png";
 import teamPhoto from "../res/aagazbg.png";
 import { FaCalendarAlt, FaUsers, FaMedal, FaTrophy, FaLaptop } from "react-icons/fa";
-import sportIcon1 from "../res/valorant.jpg";
-import sportIcon2 from "../res/bgmi.jpg";
+// Import sponsor logos
+import sponsor1 from "./images/sponsor1.jpg";
+import sponsor2 from "./images/sponsor2.png";
+import sponsor3 from "./images/sponsor3.png";
+
+// Import event images directly with require for better path resolution
+import valorantImage from "../res/valorant.jpg";
+import bgmiImage from "../res/bgmi.jpg";
 
 const Home = () => {
   // State for countdown timer
@@ -220,7 +226,7 @@ const Home = () => {
       name: "Valorant Tournament",
       date: "Apr 16, 2025",
       description: "Compete in the region's biggest Valorant tournament with teams from all over India.",
-      image: sportIcon1,
+      image: valorantImage,
       category: "Esports"
     },
     {
@@ -228,7 +234,7 @@ const Home = () => {
       name: "BGMI Championship",
       date: "Apr 17, 2025",
       description: "Battle it out in BGMI for incredible prizes and glory in this esports extravaganza.",
-      image: sportIcon2,
+      image: bgmiImage,
       category: "Esports"
     }
   ];
@@ -433,21 +439,45 @@ const Home = () => {
             </Col>
           </Row>
         </Container>
-        
-        <motion.div 
-          className="scroll-indicator"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{ 
-            delay: 1.5,
-            duration: 1.5, 
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          <span>Scroll for more</span>
-          <div className="scroll-arrow"></div>
-        </motion.div>
+      </section>
+
+      {/* Sponsors Section */}
+      <section className="sponsors-strip-section">
+        <Container>
+          <motion.div 
+            className="sponsors-strip"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            <h3 className="sponsors-heading">Proudly Sponsored By</h3>
+            <div className="sponsors-logos">
+              <motion.div 
+                className="sponsor-logo-wrapper"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img src={sponsor1} alt="Sponsor 1" className="sponsor-logo" />
+              </motion.div>
+              
+              <motion.div 
+                className="sponsor-logo-wrapper"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img src={sponsor2} alt="Sponsor 2" className="sponsor-logo" />
+              </motion.div>
+              
+              <motion.div 
+                className="sponsor-logo-wrapper"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img src={sponsor3} alt="Sponsor 3" className="sponsor-logo" />
+              </motion.div>
+            </div>
+          </motion.div>
+        </Container>
       </section>
 
       {/* About Section */}
@@ -664,28 +694,35 @@ const Home = () => {
               {events.map((event, i) => (
                 <Col lg={6} md={6} key={i}>
                   <motion.div 
-                    className="event-card"
+                    className="event-card-new"
                     variants={featureCardVariants}
                     custom={i}
-                    whileHover="hover"
+                    whileHover={{ y: -10, transition: { type: "spring", stiffness: 300 } }}
                   >
-                    <div className="event-image">
-                      <Image 
-                        src={event.image}
+                    <div className="event-card-media">
+                      <img 
+                        src={event.image} 
                         alt={event.name}
-                        className="event-thumbnail"
+                        className="event-card-img" 
                       />
-                      <span className="event-category">{event.category}</span>
+                      <div className="event-card-badge">{event.category}</div>
+                      <div className="event-card-media-overlay"></div>
                     </div>
-                    <div className="event-content">
-                      <h3 className="event-title">{event.name}</h3>
-                      <div className="event-date">
-                        <FaCalendarAlt /> <span>{event.date}</span>
+                    <div className="event-card-body">
+                      <h3 className="event-card-title">{event.name}</h3>
+                      <div className="event-card-date">
+                        <FaCalendarAlt className="event-card-icon" /> <span>{event.date}</span>
                       </div>
-                      <p className="event-description">{event.description}</p>
-                      <Button className="event-button" href={`/events0`}>
-                        Learn More
-                      </Button>
+                      <p className="event-card-text">{event.description}</p>
+                      <motion.div 
+                        className="event-card-footer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Button className="event-card-btn" href="/events0">
+                          Learn More
+                        </Button>
+                      </motion.div>
                     </div>
                   </motion.div>
                 </Col>

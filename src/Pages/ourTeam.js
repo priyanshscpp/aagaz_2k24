@@ -5,13 +5,14 @@ import { Container } from 'react-bootstrap';
 import { FaInstagram, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa';
 import "./style/team.css";
 
-import faiz from "./images/Akhilesh";
-import namrata from "./images/Awantika2.jpg";
-import sahil from "./images/Tauqeer.jpg";
-import sonu from "./images/Dev.jpg";
-import aryan from "./images/Abhishek.jpg";
+import akhilesh from "./images/Akhilesh.jpg";
+import awantika from "./images/Awantika2.jpg";
+import tauqeer from "./images/Tauqeer.jpg";
+import dev from "./images/Dev.jpg";
+import abhishek from "./images/Abhishek.jpg";
 import vikas from "./images/Vikas .jpg";
-import ashutosh from "./images/Prateek.jpg";
+import prateek from "./images/Prateek.jpg";
+import rishabhdesign from "./images/Rishabh Design.jpeg";
 const Team = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,7 +34,7 @@ const Team = () => {
       id: 1,
       name: "Akhilesh Yadav",
       role: "Students Secretary",
-      image: faiz,
+      image: akhilesh,
       description: "Leading the AAGAZ'25 organizing committee with vision and dedication.",
       instagram: "https://www.instagram.com/akhil_023ii/",
       linkedin: "https://www.linkedin.com/in/akhilesh-yadav-59541425a/",
@@ -44,7 +45,7 @@ const Team = () => {
       id: 2,
       name: "Awantika",
       role: "Students Secretary",
-      image: namrata,
+      image: awantika,
       description: "Coordinating all aspects of AAGAZ'25 with exceptional organizational skills.",
       instagram: "https://www.instagram.com/avni_17_05",
       linkedin: "https://www.linkedin.com/in/awantika-chaudhary-3ba9a92b1/",
@@ -58,7 +59,7 @@ const Team = () => {
       id: 3,
       name: "Mohammad Tauqeer",
       role: "Technical Head",
-      image: sahil,
+      image: tauqeer,
       description: "Managing all technical aspects of AAGAZ'25 with expertise and innovation.",
       instagram: "https://www.instagram.com/tauqeer_7770/",
       linkedin: "https://www.linkedin.com/in/mohammad-tauqeer-a-642702258/",
@@ -69,7 +70,7 @@ const Team = () => {
       id: 5,
       name: "Dev Chitousia",
       role: "Event Coordinator",
-      image: sonu,
+      image: dev,
       description: "Coordinating all events and ensuring smooth execution during AAGAZ'25.",
       instagram: "https://www.instagram.com/dev_chitousia",
       linkedin: "https://www.linkedin.com/in/dev-chitousia-5674a628a",
@@ -80,7 +81,7 @@ const Team = () => {
       id: 7,
       name: "Abhishek Mishra",
       role: "Event Coordinator",
-      image: aryan,
+      image: abhishek,
       description: "Coordinating all events and ensuring smooth execution during AAGAZ'25.",
       instagram: "#",
       linkedin: "#",
@@ -89,6 +90,17 @@ const Team = () => {
     },
     {
       id: 9,
+      name: "Prateek Srivastava",
+      role: "Web Dev Lead",
+      image: prateek,
+      description: "Designed and Developed the Aagaz 25' Website, giving it a unique UI.",
+      instagram: "#",
+      linkedin: "https://www.linkedin.com/in/prateek-workspace/",
+      email: "240006006@hbtu.ac.in",
+      phone: "+91-9918927749"
+    },
+    {
+      id: 10,
       name: "Vikas",
       role: "Design Head",
       image: vikas,
@@ -99,11 +111,11 @@ const Team = () => {
       phone: "+91XXXXXXXXXX"
     },
     {
-      id: 10,
-      name: "Prateek Srivastava",
-      role: "Web Dev Lead",
-      image: ashutosh,
-      description: "Designed Aagaz 25' Website, giving it a unique UI.",
+      id: 11,
+      name: "Rishabh Sharma",
+      role: "Design Head",
+      image: rishabhdesign,
+      description: "Designed Official Merch and Coordinating sports events during AAGAZ'25..",
       instagram: "#",
       linkedin: "#",
       email: "example@hbtu.ac.in",
@@ -115,6 +127,7 @@ const Team = () => {
     return (
       <motion.div className="team-card" variants={itemVariants}>
         <img src={member.image} alt={member.name} className="team-card-image" />
+        <div className="team-card-image-overlay"></div>
         <div className="team-card-content">
           <h3 className="team-card-title">{member.name}</h3>
           <p className="team-card-role">{member.role}</p>
