@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, Row, Col } from 'react-bootstrap';
 import { FaShoppingCart, FaMoneyBillWave, FaPhoneAlt } from 'react-icons/fa';
 import './style/merch.css';
-import merchImage from "../res/merch.jpg";
+import merch1 from "../Components/assets/merch1.jpeg";
+import merch2 from "../Components/assets/merch2.jpeg";
+import upiImage from "../Pages/images/upi.jpeg";
 
 const Merch = () => {
   // Animation variants
@@ -80,7 +82,14 @@ const Merch = () => {
             className="merch-image-container"
             variants={itemVariants}
           >
-            <img src={merchImage} alt="AAGAZ'25 Merchandise" className="merch-image" />
+            <Row className="merch-images-row">
+              <Col md={6} className="merch-image-col">
+                <img src={merch1} alt="AAGAZ'25 Merchandise 1" className="merch-image" />
+              </Col>
+              <Col md={6} className="merch-image-col">
+                <img src={merch2} alt="AAGAZ'25 Merchandise 2" className="merch-image" />
+              </Col>
+            </Row>
             
             <div className="merch-image-cta">
               <Button variant="danger" size="lg" className="merch-button">
@@ -100,14 +109,19 @@ const Merch = () => {
               <p>{merchDescription}</p>
               
               <div className="merch-contact">
-                <p>UPI ID: <span className="merch-upi">9057348650@ybl</span></p>
-                
-                <p>For any further query contact:</p>
-                <p><strong>FAIZ KHAN (3rd CHE)</strong><br />
-                +916393743138<br />
-                +916392063720</p>
-                
-                <h3><strong>Regards,<br />Sports Sub-council,<br />USAC, HBTU.</strong></h3>
+                <Row>
+                  <Col md={7}>
+                    <p>UPI ID: <span className="merch-upi">akhileshyadav1523@oksbi</span></p>
+                    
+                    <p>For any further query contact:</p>
+                    <p><strong>Akhilesh Yadav (3rd CE)</strong><br /></p>
+                    +916392782210<br />                  
+                    <h3><strong>Regards,<br />Sports Sub-council,<br />USAC, HBTU.</strong></h3>
+                  </Col>
+                  <Col md={5} className="upi-image-container">
+                    <img src={upiImage} alt="UPI QR Code" className="upi-image" />
+                  </Col>
+                </Row>
               </div>
             </div>
           </motion.div>
@@ -121,7 +135,14 @@ const Merch = () => {
           animate={inView ? "visible" : "hidden"}
         >
           <motion.div variants={itemVariants}>
-            <img src={merchImage} alt="AAGAZ'25 Merchandise" className="merch-image" />
+            <Row className="merch-images-row">
+              <Col xs={12} sm={6} className="merch-image-col mb-3">
+                <img src={merch1} alt="AAGAZ'25 Merchandise 1" className="merch-image" />
+              </Col>
+              <Col xs={12} sm={6} className="merch-image-col mb-3">
+                <img src={merch2} alt="AAGAZ'25 Merchandise 2" className="merch-image" />
+              </Col>
+            </Row>
             
             <div className="merch-image-cta" style={{ marginTop: '20px', marginBottom: '30px' }}>
               <Button variant="danger" size="lg" className="merch-button">
@@ -138,14 +159,21 @@ const Merch = () => {
               <p>{merchDescription}</p>
               
               <div className="merch-contact">
-                <p>UPI ID: <span className="merch-upi">9057348650@ybl</span></p>
-                
-                <p>For any further query contact:</p>
-                <p><strong>FAIZ KHAN (3rd CHE)</strong><br />
-                +916393743138<br />
-                +916392063720</p>
-                
-                <h3><strong>Regards,<br />Sports Sub-council,<br />USAC, HBTU.</strong></h3>
+                <Row>
+                  <Col xs={12} md={7}>
+                    <p>UPI ID: <span className="merch-upi">9057348650@ybl</span></p>
+                    
+                    <p>For any further query contact:</p>
+                    <p><strong>FAIZ KHAN (3rd CHE)</strong><br />
+                    +916393743138<br />
+                    +916392063720</p>
+                    
+                    <h3><strong>Regards,<br />Sports Sub-council,<br />USAC, HBTU.</strong></h3>
+                  </Col>
+                  <Col xs={12} md={5} className="upi-image-container">
+                    <img src={upiImage} alt="UPI QR Code" className="upi-image" />
+                  </Col>
+                </Row>
               </div>
             </div>
           </motion.div>

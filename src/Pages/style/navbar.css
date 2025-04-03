@@ -199,7 +199,7 @@ html {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: 9999;
   transition: all 0.3s ease;
 }
 
@@ -243,6 +243,7 @@ html {
     border-radius: 10px;
     padding: 1rem;
     margin-top: 1rem;
+    z-index: 9999;
   }
 }
 
@@ -254,6 +255,14 @@ html {
 }
 
 /* Specific adjustments for mobile */
+@media (max-width: 768px) {
+  .eventStyle1, .eventStyle2, .eventStyle3,
+  .team-container, .gallery-container, .merch-container,
+  .sponsors-container, .esports-container {
+    padding-top: 100px !important;
+  }
+}
+
 @media (max-width: 576px) {
   .eventStyle1, .eventStyle2, .eventStyle3,
   .team-container, .gallery-container, .merch-container,
@@ -267,7 +276,7 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 9999;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -276,25 +285,8 @@ html {
   transition: all 0.3s ease;
 }
 
-/* Add padding to main content containers to prevent navbar overlap */
-.esports-container,
-.eventStyle1,
-.team-container,
-.gallery-container,
-.sponsors-container {
-  padding-top: 80px !important;
-}
-
 @media (max-width: 768px) {
   .navbar {
     padding: 0.3rem 1rem;
-  }
-  
-  .esports-container,
-  .eventStyle1,
-  .team-container,
-  .gallery-container,
-  .sponsors-container {
-    padding-top: 60px !important;
   }
 }

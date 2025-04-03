@@ -41,38 +41,38 @@ const Gallery = () => {
   const galleryData = [
     {
       image: "https://github.com/ayushsom1/aagaz-gallery/blob/main/20220522201931__MG_2794.JPG?raw=true",
-      caption: "AAGAZ'22 - Opening Ceremony",
-      description: "The grand opening ceremony of AAGAZ'22 with performances and celebrations."
+      caption: "AAGAZ'24 - Opening Ceremony",
+      description: "The grand opening ceremony of AAGAZ'24 with performances and celebrations."
     },
     {
       image: "https://github.com/ayushsom1/aagaz-gallery/blob/main/WhatsApp%20Image%202023-03-23%20at%2023.32.11.jpg?raw=true",
-      caption: "AAGAZ'22 - Basketball Tournament",
+      caption: "AAGAZ'24 - Basketball Tournament",
       description: "Intense basketball matches during the tournament."
     },
     {
       image: "https://github.com/ayushsom1/aagaz-gallery/blob/main/football.jpg?raw=true",
-      caption: "AAGAZ'22 - Football Match",
-      description: "Football teams competing on the field during AAGAZ'22."
+      caption: "AAGAZ'24 - Football Match",
+      description: "Football teams competing on the field during AAGAZ'24."
     },
     {
       image: "https://github.com/ayushsom1/aagaz-gallery/blob/main/WhatsApp%20Image%202023-03-23%20at%2022.50.44.jpg?raw=true",
-      caption: "AAGAZ'22 - Cultural Performance",
+      caption: "AAGAZ'24 - Cultural Performance",
       description: "Cultural performances showcasing talent from participating colleges."
     },
     {
       image: "https://github.com/ayushsom1/aagaz-gallery/blob/main/WhatsApp%20Image%202023-03-23%20at%2022.50.49.jpg?raw=true",
-      caption: "AAGAZ'22 - Award Ceremony",
+      caption: "AAGAZ'24 - Award Ceremony",
       description: "Recognizing and celebrating achievements during the award ceremony."
     },
     {
       image: "https://github.com/ayushsom1/aagaz-gallery/blob/main/WhatsApp%20Image%202023-03-23%20at%2022.50.46.jpg?raw=true",
-      caption: "AAGAZ'22 - Team Celebration",
-      description: "Teams celebrating their victories and participation in AAGAZ'22."
+      caption: "AAGAZ'24 - Team Celebration",
+      description: "Teams celebrating their victories and participation in AAGAZ'24."
     },
     {
       image: "https://github.com/ayushsom1/aagaz-gallery/blob/main/WhatsApp%20Image%202023-03-23%20at%2022.50.47.jpg?raw=true",
-      caption: "AAGAZ'22 - Closing Ceremony",
-      description: "The grand finale of AAGAZ'22 with closing performances and celebrations."
+      caption: "AAGAZ'24 - Closing Ceremony",
+      description: "The grand finale of AAGAZ'24 with closing performances and celebrations."
     },
   ];
 

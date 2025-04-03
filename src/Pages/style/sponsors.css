@@ -1,12 +1,16 @@
-/* Tech-oriented sponsors page styling with modern design elements */
+/* Modern tech-oriented sponsors page styling */
 :root {
   --sponsors-bg: #0a0a12;
-  --sponsors-text: rgba(255, 255, 255, 0.85);
-  --sponsors-text-secondary: rgba(255, 255, 255, 0.6);
+  --sponsors-text: rgba(255, 255, 255, 0.9);
+  --sponsors-text-secondary: rgba(255, 255, 255, 0.7);
   --sponsors-accent: #f23849;
   --sponsors-accent-secondary: #004ea8;
   --sponsors-highlight: #ffcb05;
-  --sponsors-border: rgba(255, 255, 255, 0.08);
+  --sponsors-border: rgba(255, 255, 255, 0.1);
+  --platinum-color: #e5e5e5;
+  --gold-color: #ffd700;
+  --silver-color: #c0c0c0;
+  --card-bg: rgba(15, 15, 22, 0.8);
 }
 
 .sponsors-container {
@@ -14,13 +18,23 @@
   width: 100%;
   background-color: #000000;
   color: var(--sponsors-text);
-  padding-top: 80px;
-  padding-bottom: 50px;
+  padding-top: 120px;
+  padding-bottom: 70px;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
-/* Tech background elements */
+/* Background elements */
+.sponsors-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 .sponsors-particles {
   position: absolute;
   top: 0;
@@ -34,8 +48,7 @@
   z-index: -2;
 }
 
-.sponsors-container::before {
-  content: '';
+.sponsors-grid-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -49,16 +62,44 @@
   opacity: 0.3;
 }
 
+.sponsors-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(circle at right, 
+    rgba(242, 56, 73, 0.03) 0%, 
+    transparent 70%);
+  z-index: -1;
+}
+
+.sponsors-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(circle at left, 
+    rgba(0, 78, 168, 0.03) 0%, 
+    transparent 70%);
+  z-index: -1;
+}
+
+/* Header section */
 .sponsors-header {
   text-align: center;
   margin-bottom: 60px;
+  padding: 0 20px;
 }
 
 .sponsors-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
-  color: var(--sponsors-accent);
-  margin-bottom: 15px;
+  color: var(--sponsors-text);
+  margin-bottom: 20px;
   position: relative;
   display: inline-block;
 }
@@ -80,21 +121,100 @@
   color: var(--sponsors-text-secondary);
   max-width: 700px;
   margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Sponsors content wrapper */
+.sponsors-content-wrapper {
+  margin-bottom: 60px;
 }
 
 /* Sponsor tiers */
 .sponsors-tier {
   margin-bottom: 60px;
+  padding: 0 15px;
+}
+
+.all-sponsors .sponsors-cards-container {
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+/* Sponsor tier specific styling */
+.platinum-card {
+  border: 1px solid rgba(229, 229, 229, 0.1);
+}
+
+.gold-card {
+  border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.silver-card {
+  border: 1px solid rgba(192, 192, 192, 0.1);
+}
+
+.platinum-card::before {
+  background: linear-gradient(135deg, rgba(229, 229, 229, 0.05) 0%, transparent 70%);
+}
+
+.gold-card::before {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+}
+
+.silver-card::before {
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.05) 0%, transparent 70%);
+}
+
+.platinum-card:hover {
+  box-shadow: 0 15px 35px rgba(229, 229, 229, 0.15);
+  border-color: rgba(229, 229, 229, 0.2);
+}
+
+.gold-card:hover {
+  box-shadow: 0 15px 35px rgba(255, 215, 0, 0.15);
+  border-color: rgba(255, 215, 0, 0.2);
+}
+
+.silver-card:hover {
+  box-shadow: 0 15px 35px rgba(192, 192, 192, 0.15);
+  border-color: rgba(192, 192, 192, 0.2);
+}
+
+.platinum-badge {
+  background: var(--platinum-color);
+}
+
+.gold-badge {
+  background: var(--gold-color);
+}
+
+.silver-badge {
+  background: var(--silver-color);
+}
+
+.platinum-type {
+  color: var(--platinum-color);
+}
+
+.gold-type {
+  color: var(--gold-color);
+}
+
+.silver-type {
+  color: var(--silver-color);
+}
+
+.tier-header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .tier-title {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: var(--sponsors-highlight);
-  margin-bottom: 30px;
-  text-align: center;
   position: relative;
   display: inline-block;
+  padding: 0 25px;
 }
 
 .tier-title::before,
@@ -102,42 +222,57 @@
   content: '';
   position: absolute;
   top: 50%;
-  width: 40px;
+  width: 50px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--sponsors-highlight));
+}
+
+.platinum-tier .tier-title::before,
+.platinum-tier .tier-title::after {
+  background: linear-gradient(90deg, transparent, var(--platinum-color), transparent);
+}
+
+.gold-tier .tier-title::before,
+.gold-tier .tier-title::after {
+  background: linear-gradient(90deg, transparent, var(--gold-color), transparent);
+}
+
+.silver-tier .tier-title::before,
+.silver-tier .tier-title::after {
+  background: linear-gradient(90deg, transparent, var(--silver-color), transparent);
 }
 
 .tier-title::before {
   right: 100%;
-  margin-right: 15px;
 }
 
 .tier-title::after {
   left: 100%;
-  margin-left: 15px;
-  background: linear-gradient(90deg, var(--sponsors-highlight), transparent);
 }
 
-/* Sponsor cards */
-.sponsors-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+/* Sponsor cards container */
+.sponsors-cards-container {
+  display: flex;
+  justify-content: center;
   gap: 30px;
-  padding: 0 30px;
+  flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Sponsor cards */
 .sponsor-card {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
+  background: var(--card-bg);
+  border-radius: 15px;
   overflow: hidden;
   transition: all 0.3s ease;
-  height: 280px;
+  width: 31%; /* Approximately one-third of container */
+  min-width: 280px;
+  max-width: 350px;
+  height: 450px;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .sponsor-card::before {
@@ -147,7 +282,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(242, 56, 73, 0.05) 0%, transparent 100%);
   z-index: 0;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -157,40 +291,46 @@
   opacity: 1;
 }
 
-.sponsor-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(242, 56, 73, 0.2);
-}
-
-.sponsor-logo {
-  width: 100%;
-  height: 180px;
+/* Sponsor badge */
+.sponsor-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.02);
+  z-index: 5;
+  color: #000;
+  font-size: 1.2rem;
+}
+
+/* Sponsor logo */
+.sponsor-logo {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.03);
   position: relative;
   z-index: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .sponsor-logo img {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 85%;
+  max-height: 85%;
   object-fit: contain;
-  filter: grayscale(30%);
   transition: all 0.3s ease;
 }
 
-.sponsor-card:hover .sponsor-logo img {
-  filter: grayscale(0%);
-  transform: scale(1.05);
-}
-
+/* Sponsor content */
 .sponsor-content {
-  padding: 20px;
+  padding: 25px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -199,129 +339,209 @@
 }
 
 .sponsor-name {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--sponsors-text);
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .sponsor-type {
-  font-size: 0.9rem;
-  color: var(--sponsors-accent);
+  font-size: 1rem;
   font-weight: 500;
+  margin-bottom: 15px;
 }
 
-/* Coming soon section */
-.sponsors-coming-soon {
-  text-align: center;
-  padding: 60px 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
+.sponsor-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--sponsors-text-secondary);
+  flex-grow: 1;
+}
+
+/* Become a sponsor section */
+.become-sponsor-section {
+  background: rgba(15, 15, 22, 0.6);
+  border-radius: 15px;
+  padding: 50px 30px;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 900px;
+  border: 1px solid rgba(242, 56, 73, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-.coming-soon-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--sponsors-highlight);
+.become-sponsor-content {
+  text-align: center;
+}
+
+.aagaz-logo {
   margin-bottom: 20px;
-  letter-spacing: 2px;
 }
 
-.coming-soon-text {
+.aagaz-logo img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+
+.become-sponsor-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--sponsors-text);
+  margin-bottom: 20px;
+}
+
+.become-sponsor-text {
   font-size: 1.1rem;
   color: var(--sponsors-text-secondary);
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto 30px;
   line-height: 1.6;
 }
 
 .sponsors-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   background: linear-gradient(45deg, var(--sponsors-accent), var(--sponsors-accent-secondary));
   color: white;
-  padding: 12px 30px;
-  border-radius: 8px;
+  padding: 14px 32px;
+  border-radius: 30px;
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
   position: relative;
   overflow: hidden;
   z-index: 1;
+}
+
+.cta-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
 }
 
 .sponsors-cta::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, var(--sponsors-accent-secondary), var(--sponsors-accent));
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
   z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
 .sponsors-cta:hover::before {
-  opacity: 1;
+  left: 100%;
 }
 
 .sponsors-cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(242, 56, 73, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(242, 56, 73, 0.3);
   color: white;
   text-decoration: none;
 }
 
-/* Responsive design */
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .sponsors-cards-container {
+    max-width: 960px;
+  }
+  
+  .sponsor-card {
+    height: 420px;
+  }
+}
+
 @media (max-width: 992px) {
-  .sponsors-grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  .sponsors-title {
+    font-size: 2.5rem;
+  }
+  
+  .all-sponsors .sponsors-cards-container {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  .sponsor-card {
+    width: calc(50% - 20px);
+    min-width: 280px;
+    max-width: 320px;
+    height: 420px;
+  }
+  
+  .sponsor-logo {
+    height: 180px;
   }
 }
 
 @media (max-width: 768px) {
   .sponsors-container {
-    padding-top: 60px;
+    padding-top: 100px;
+    padding-bottom: 50px;
   }
   
   .sponsors-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
-  .sponsors-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 0 20px;
+  .tier-title {
+    font-size: 1.7rem;
+  }
+  
+  .all-sponsors .sponsors-cards-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
   }
   
   .sponsor-card {
-    height: 260px;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    min-height: 400px;
+    margin-bottom: 0;
   }
   
   .sponsor-logo {
     height: 160px;
   }
   
-  .coming-soon-title {
-    font-size: 1.8rem;
+  .become-sponsor-title {
+    font-size: 1.7rem;
+  }
+  
+  .become-sponsor-text {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 576px) {
-  .sponsors-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+  .sponsors-container {
+    padding-top: 90px;
+  }
+  
+  .sponsors-title {
+    font-size: 1.8rem;
+  }
+  
+  .sponsors-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .tier-title {
+    font-size: 1.5rem;
     padding: 0 15px;
   }
   
-  .sponsor-card {
-    height: 240px;
+  .tier-title::before,
+  .tier-title::after {
+    width: 30px;
   }
   
   .sponsor-logo {
@@ -329,22 +549,35 @@
   }
   
   .sponsor-content {
-    padding: 15px;
+    padding: 20px;
   }
   
   .sponsor-name {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
   
   .sponsor-type {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
   
-  .coming-soon-title {
-    font-size: 1.6rem;
+  .sponsor-description {
+    font-size: 0.9rem;
   }
   
-  .coming-soon-text {
-    font-size: 1rem;
+  .become-sponsor-section {
+    padding: 30px 20px;
+  }
+  
+  .become-sponsor-title {
+    font-size: 1.5rem;
+  }
+  
+  .become-sponsor-text {
+    font-size: 0.95rem;
+  }
+  
+  .sponsors-cta {
+    padding: 12px 25px;
+    font-size: 0.9rem;
   }
 } 

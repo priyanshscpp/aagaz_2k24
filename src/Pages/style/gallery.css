@@ -14,10 +14,11 @@
   width: 100%;
   background-color: #000000;
   color: var(--gallery-text);
-  padding-top: 80px;
+  padding-top: 120px;
   padding-bottom: 50px;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 /* Tech background elements */
@@ -386,7 +387,7 @@
 
 @media (max-width: 768px) {
   .gallery-container {
-    padding-top: 60px;
+    padding-top: 100px;
   }
   
   .gallery-title {
@@ -415,6 +416,10 @@
 }
 
 @media (max-width: 576px) {
+  .gallery-container {
+    padding-top: 80px;
+  }
+  
   .gallery-grid {
     grid-template-columns: 1fr;
     grid-auto-rows: 200px;
