@@ -52,6 +52,7 @@
 .merch-header {
   text-align: center;
   margin-bottom: 40px;
+  padding: 0 20px;
 }
 
 .merch-title {
@@ -90,6 +91,7 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(242, 56, 73, 0.2);
   transition: all 0.3s ease;
+  object-fit: contain;
 }
 
 .merch-image:hover {
@@ -142,6 +144,7 @@
   font-family: monospace;
   font-size: 1.1rem;
   border: 1px dashed rgba(242, 56, 73, 0.3);
+  word-break: break-all;
 }
 
 .merch-cta {
@@ -159,6 +162,10 @@
   box-shadow: 0 5px 15px rgba(242, 56, 73, 0.3) !important;
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  display: block;
 }
 
 .merch-button::before {
@@ -192,21 +199,20 @@
   justify-content: center;
 }
 
-/* Mobile version */
-.merch-mobile {
-  display: none;
-  padding: 20px;
-}
-
 /* Responsive design */
 @media (max-width: 992px) {
   .merch-content {
     flex-direction: column;
+    padding: 0 30px;
   }
   
   .merch-image-container, .merch-details {
     padding: 0;
     margin-bottom: 30px;
+  }
+
+  .merch-image {
+    max-height: 400px;
   }
 }
 
@@ -219,19 +225,16 @@
     font-size: 2rem;
   }
   
-  .merch-image {
-    max-height: 400px;
-    object-fit: contain;
-    margin: 0 auto;
-    display: block;
+  .merch-subtitle {
+    font-size: 1rem;
   }
-  
+
   .merch-content {
-    display: none;
+    padding: 0 20px;
   }
   
-  .merch-mobile {
-    display: block;
+  .merch-image {
+    max-height: 300px;
   }
   
   .merch-description {
@@ -240,5 +243,46 @@
   
   .merch-description p {
     font-size: 0.95rem;
+  }
+
+  .merch-upi {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .merch-container {
+    padding-top: 50px;
+  }
+
+  .merch-title {
+    font-size: 1.8rem;
+  }
+
+  .merch-content {
+    padding: 0 15px;
+  }
+
+  .merch-image {
+    max-height: 250px;
+  }
+
+  .merch-description {
+    padding: 15px;
+  }
+
+  .merch-description p {
+    font-size: 0.9rem;
+  }
+
+  .merch-upi {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+
+  .merch-button {
+    padding: 10px 20px !important;
+    font-size: 0.95rem !important;
   }
 }
