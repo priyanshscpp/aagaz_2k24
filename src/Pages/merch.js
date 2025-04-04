@@ -94,7 +94,7 @@ const Merch = () => {
             <div className="merch-image-cta">
               <Button variant="danger" size="lg" className="merch-button">
                 <FaShoppingCart style={{ marginRight: '8px' }} />
-                <a href='https://docs.google.com/forms/d/e/1FAIpQLSfmi3xtwGG3YAwpWxpAp08ZamaBEObvH4rgQTwPLzez2k486w/viewform?usp=sf_link' target='_blank' rel="noopener noreferrer">
+                <a href='https://docs.google.com/forms/d/e/1FAIpQLSeJZyDmEUFZSr3yJo6ZoxBoATDH2Mdp7penGFkyrTp_ofiL5g/viewform?usp=header' target='_blank' rel="noopener noreferrer">
                   Book your T-Shirt now
                 </a>
               </Button>
