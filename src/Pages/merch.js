@@ -83,10 +83,10 @@ const Merch = () => {
             variants={itemVariants}
           >
             <Row className="merch-images-row">
-              <Col md={6} className="merch-image-col">
+              <Col xs={12} sm={6} className="merch-image-col mb-3">
                 <img src={merch1} alt="AAGAZ'25 Merchandise 1" className="merch-image" />
               </Col>
-              <Col md={6} className="merch-image-col">
+              <Col xs={12} sm={6} className="merch-image-col mb-3">
                 <img src={merch2} alt="AAGAZ'25 Merchandise 2" className="merch-image" />
               </Col>
             </Row>
@@ -110,64 +110,12 @@ const Merch = () => {
               
               <div className="merch-contact">
                 <Row>
-                  <Col md={7}>
+                  <Col xs={12} md={7}>
                     <p>UPI ID: <span className="merch-upi">akhileshyadav1523@oksbi</span></p>
                     
                     <p>For any further query contact:</p>
                     <p><strong>Akhilesh Yadav (3rd CE)</strong><br /></p>
                     +916392782210<br />                  
-                    <h3><strong>Regards,<br />Sports Sub-council,<br />USAC, HBTU.</strong></h3>
-                  </Col>
-                  <Col md={5} className="upi-image-container">
-                    <img src={upiImage} alt="UPI QR Code" className="upi-image" />
-                  </Col>
-                </Row>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-        
-        {/* Mobile version */}
-        <motion.div 
-          className="merch-mobile"
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-        >
-          <motion.div variants={itemVariants}>
-            <Row className="merch-images-row">
-              <Col xs={12} sm={6} className="merch-image-col mb-3">
-                <img src={merch1} alt="AAGAZ'25 Merchandise 1" className="merch-image" />
-              </Col>
-              <Col xs={12} sm={6} className="merch-image-col mb-3">
-                <img src={merch2} alt="AAGAZ'25 Merchandise 2" className="merch-image" />
-              </Col>
-            </Row>
-            
-            <div className="merch-image-cta" style={{ marginTop: '20px', marginBottom: '30px' }}>
-              <Button variant="danger" size="lg" className="merch-button">
-                <FaShoppingCart style={{ marginRight: '8px' }} />
-                <a href='https://docs.google.com/forms/d/e/1FAIpQLSfmi3xtwGG3YAwpWxpAp08ZamaBEObvH4rgQTwPLzez2k486w/viewform?usp=sf_link' target='_blank' rel="noopener noreferrer">
-                  Book your T-Shirt now
-                </a>
-              </Button>
-            </div>
-          </motion.div>
-          
-          <motion.div variants={itemVariants}>
-            <div className="merch-description">
-              <p>{merchDescription}</p>
-              
-              <div className="merch-contact">
-                <Row>
-                  <Col xs={12} md={7}>
-                    <p>UPI ID: <span className="merch-upi">9057348650@ybl</span></p>
-                    
-                    <p>For any further query contact:</p>
-                    <p><strong>FAIZ KHAN (3rd CHE)</strong><br />
-                    +916393743138<br />
-                    +916392063720</p>
-                    
                     <h3><strong>Regards,<br />Sports Sub-council,<br />USAC, HBTU.</strong></h3>
                   </Col>
                   <Col xs={12} md={5} className="upi-image-container">
